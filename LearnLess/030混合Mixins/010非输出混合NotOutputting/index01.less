@@ -1,0 +1,18 @@
+.my-mixin {
+  color: red;
+}
+//注意这里的括号
+.my-other-mixin(){
+  background:white;
+}
+.some-class{
+  .my-mixin;
+  .my-other-mixin;
+  font-size:10px;
+}
+
+//注意与继承的区别
+.extend-class{
+  &:extend(.my-mixin);
+  font-size:10px;
+}
