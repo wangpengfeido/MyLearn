@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../110Symbol/010/index01.js"],"names":["s","Symbol","console","log"],"mappings":";;AAAA;;;AAGA,IAAIA,IAAEC,OAAO,KAAP,CAAN;AACAC,QAAQC,GAAR,CAAYH,CAAZ","file":"index01.js","sourcesContent":["/**\r\n * Created by w1036_000 on 2016/11/28.\r\n */\r\nlet s=Symbol(\"foo\");\r\nconsole.log(s);"]}
