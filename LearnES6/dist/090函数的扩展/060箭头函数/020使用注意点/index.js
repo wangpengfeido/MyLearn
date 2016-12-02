@@ -22,4 +22,4 @@ foo.call({ id: 42 });
 /////////////////////////////
 foo2();
 foo2.call({ id: 42 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index01.js.map
