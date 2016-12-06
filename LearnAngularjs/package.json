@@ -11,5 +11,8 @@
   "devDependencies": {
     "angular": "^1.5.9",
     "angular-animate": "^1.5.9"
+  },
+  "dependencies": {
+    "angular-ui-bootstrap": "^2.3.0"
   }
 }
