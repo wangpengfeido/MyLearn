@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域的绑定方式</title>
+</head>
+<body ng-app="myApp" ng-controller="ctrl">
+    <div>
+        <h3>one</h3>
+        <div>{{values.one}}</div>
+        <div><input type="text" ng-model="values.one"></div>
+    </div>
+    <div>
+        <h3>two</h3>
+        <div>{{values.two}}</div>
+        <div><input type="text" ng-model="values.two"></div>
+    </div>
+    <div>
+        <h3>three</h3>
+        <div><button ng-click="values.three()">three</button></div>
+    </div>
+    <div>
+        <h3>four</h3>
+        <div>{{values.four}}</div>
+        <div><input type="text" ng-model="values.four"></div>
+    </div>
+    <hr/>
+    <div dir-one bind-value="{{values.one}}"></div>
+    <div dir-two bind-value="values.two"></div>
+    <div dir-three bind-value="values.three()"></div>
+    <div dir-four bind-value="values.four"></div>
+
+
+
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="index01.js"></script>
+</body>
+</html>
