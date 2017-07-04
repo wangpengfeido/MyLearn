@@ -14,10 +14,14 @@ app.controller('myController', function ($scope) {
 
     /**
      * CSS类基础动画
-     * ngHide,ngShow自带动画类：.ng-hide
-     * ngClass使用添加的类名定义动画：.xxx-add .xxx-remove
+     * ngHide,ngShow自带动画类：.ng-hide定义隐藏的起始状态和过度
+     * ngClass使用添加的类名定义动画：.xxx-add定义添加时的起始状态 .xxx-remove定义移除时的起始状态
      * 动画定义方式与上面类似
      */
+
+    /*
+    * CSS延迟动画
+    * */
 
 
 });

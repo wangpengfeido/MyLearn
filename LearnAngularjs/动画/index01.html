@@ -33,6 +33,18 @@
     </div>
     <button ng-click="onOff=!onOff">Toggle</button>
 
+    <!--CSS延迟动画-->
+    <h1>CSS延迟动画</h1>
+    <div ng-if="cssStaggering" class="cssStaggering">
+        Fade me in out
+    </div>
+    <button ng-click="cssStaggering=true">Fade In!</button>
+    <button ng-click="cssStaggering=false">Fade Out!</button>
+
+
+
+
+
     <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angular-animate/angular-animate.js"></script>
     <script src="index01.js"></script>
