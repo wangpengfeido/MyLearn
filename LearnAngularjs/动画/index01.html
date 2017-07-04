@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <link href="index01.css" type="text/css" rel="stylesheet">
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+    <!--CSS基础动画-->
+    <h1>CSS基础动画</h1>
+    <div ng-if="cssBase" class="cssBase">
+        Fade me in out
+    </div>
+    <button ng-click="cssBase=true">Fade In!</button>
+    <button ng-click="cssBase=false">Fade Out!</button>
+    <br/>
+    <div ng-if="cssBase2" class="cssBase2">
+        Fade me in out
+    </div>
+    <button ng-click="cssBase2=true">Fade In!</button>
+    <button ng-click="cssBase2=false">Fade Out!</button>
+
+    <!--CSS类基础动画-->
+    <h1>CSS类基础动画</h1>
+    <div ng-show="cssClassBase" class="cssClassBase">
+        Show and hide me
+    </div>
+    <button ng-click="cssClassBase=!cssClassBase">Toggle</button>
+    <br/>
+    <div ng-class="{on:onOff}" class="highlight">
+        Highlight this box
+    </div>
+    <button ng-click="onOff=!onOff">Toggle</button>
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="index01.js"></script>
+</body>
+</html>
