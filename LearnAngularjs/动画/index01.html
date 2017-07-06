@@ -7,6 +7,13 @@
 </head>
 <body ng-app="myApp" ng-controller="myController">
 
+    <!--什么动画都没有-->
+    <h1>什么动画都没有</h1>
+    <div ng-show="no">
+        Show and hide me
+    </div>
+    <button ng-click="no=!no">Toggle</button>
+
     <!--CSS基础动画-->
     <h1>CSS基础动画</h1>
     <div ng-if="cssBase" class="cssBase">

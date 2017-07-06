@@ -15,7 +15,7 @@ app.controller('myController', function ($scope) {
     /**
      * CSS类基础动画
      * ngHide,ngShow自带动画类：.ng-hide
-     * ngClass使用添加的类名定义动画：.xxx-add .xxx-remove
+     * ngClass使用添加的类名定义动画：.xxx-add .xxx-remove xxx-add-active xxx-remove-active
      * 动画定义方式与上面类似
      */
 
