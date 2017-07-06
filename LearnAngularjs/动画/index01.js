@@ -19,5 +19,9 @@ app.controller('myController', function ($scope) {
      * 动画定义方式与上面类似
      */
 
+    /*
+    * CSS延迟动画
+    * */
+
 
 });
