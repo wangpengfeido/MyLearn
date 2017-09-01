@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>&绑定详情</title>
+</head>
+<body ng-app="myApp" ng-controller="ctrl">
+    <div>
+        <h3 ng-click="data.fn()">外部</h3>
+    </div>
+    <div dir-one bind-fn-one="data.fn()" bind-fn-two="data.fn(1)" bind-fn-three="data.fn(a,b)" bind-fn-four="data.fn()"></div>
+
+
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="index02.js"></script>
+</body>
+</html>
