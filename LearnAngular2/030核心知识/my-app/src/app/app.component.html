@@ -1,5 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h1>
+<nav>
   angular核心知识
-</h1>
+</nav>
+<div class="body">
+  <div class="left-menu">
+    <ul>
+      <li>
+        <a href="javascript:void(0)">架构</a>
+        <ul>
+          <li><a routerLink="/architecture" routerLinkActive="active">组件、模版、元数据</a></li>
+          <li><a routerLink="/dataBinding" routerLinkActive="active">数据绑定</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="right-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
 

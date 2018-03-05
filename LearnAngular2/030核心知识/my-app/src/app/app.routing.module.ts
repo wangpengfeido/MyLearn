@@ -1,8 +1,18 @@
+//这里定义了路由
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 
-const routes: Routes = [
+import {AcaComponentsComponent} from './aaa-architecture/aca-components.component';
+import {AdaDataBindingComponent} from "./aaa-architecture/ada-data-binding/ada-data-binding.component";
 
+const routes: Routes = [
+  {
+    path: 'architecture',
+    component: AcaComponentsComponent
+  }, {
+    path: 'dataBinding',
+    component: AdaDataBindingComponent,
+  }
 ];
 
 @NgModule({

@@ -1,17 +1,23 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AbaModulesComponent} from './aba-modules.component';
-import { AcaComponentsComponent } from './aca-components.component';
+import {FormsModule} from "@angular/forms";
 
+import {AcaComponentsComponent} from './aca-components.component';
+import {AdaDataBindingComponent} from './ada-data-binding/ada-data-binding.component';
+import { AeaDirectiveComponent } from './aea-directive/aea-directive.component';
+
+//定义一个模块
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
-    AbaModulesComponent,
     AcaComponentsComponent,
+    AdaDataBindingComponent,
+    AeaDirectiveComponent,
   ],
-  exports: [AbaModulesComponent]
+  exports: [AcaComponentsComponent]
 })
 export class AaaArchitectureModule {
 }

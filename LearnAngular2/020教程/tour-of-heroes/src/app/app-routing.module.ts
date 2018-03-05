@@ -7,11 +7,11 @@ import {DashboardComponent} from "./dashboard.component";
 
 const routes: Routes = [
   {
+    //默认路由
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full',
-  },
-  {
+  }, {
     path: 'heroes',
     component: HeroesComponent,
   }, {
