@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app.routing.module';
 import {AppComponent} from './app.component';
 
 import {AaaArchitectureModule} from "./aaa-architecture/aaa-architecture.module";
+import {AbaTemplateAndBindingModule} from "./aba-template-and-binding/aba-template-and-binding.module";
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {AaaArchitectureModule} from "./aaa-architecture/aaa-architecture.module"
     BrowserModule,
     AppRoutingModule,
     AaaArchitectureModule,
+    AbaTemplateAndBindingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

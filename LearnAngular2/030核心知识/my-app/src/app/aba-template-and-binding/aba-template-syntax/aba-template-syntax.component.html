@@ -1,0 +1,67 @@
+<div>
+  <div>
+    <!--插值表达式-->
+    <div>a:{{a}}</div>
+    <div>{{1+1+getVal()}}</div>
+  </div>
+  <div>
+    <!--模版表达式-->
+    <!--JavaScript 中那些具有或可能引发副作用的表达式是被禁止的，包括：1,赋值 (=, +=, -=, ...);2,new运算符;3,使用;或,的链式表达式;4,自增或自减操作符 (++和--)-->
+    <!--和 JavaScript语 法的其它显著不同包括：1,不支持位运算|和&;2,具有新的模板表达式运算符，比如|、?.和!。-->
+    <!--模板表达式不能引用全局命名空间中的任何东西-->
+    <div>
+      <!--表达式上下文-->
+      <!--典型的表达式上下文就是这个组件实例-->
+      <!--表达式的上下文可以包括组件之外的对象。 比如模板输入变量 (let list)和模板引用变量(#nameInput)就是备选的上下文对象之一。-->
+      <ul>
+        <li *ngFor="let a of list">{{a.index}}</li>
+      </ul>
+      <input #nameInput>{{nameInput.value}}
+    </div>
+    <div>
+      <!--表达式指南。请遵循下列指南：没有可见的副作用；执行迅速；非常简单；幂等性-->
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--模板语句-->
+    <!--模板语句解析器和模板表达式解析器有所不同，特别之处在于它支持基本赋值 (=) 和表达式链 (;和,)。-->
+    <!--某些 JavaScript 语法仍然是不允许的：new运算符；自增和自减运算符：++和--；操作并赋值，例如+=和-=；位操作符|和&；模板表达式运算符-->
+    <button (click)="handleClick();1+1;">click</button>
+    <div>
+      <!--语句上下文-->
+      <!--通常是正在绑定事件的那个组件实例-->
+      <!--语句上下文可以引用模板自身上下文中的属性。-->
+      <button (click)="handleClick($event,10);1+1;">$event/模板输入变量</button>
+      <button (click)="handleClick($event,clickBtn);1+1;" #clickBtn>$event/模板引用变量</button>
+    </div>
+    <div>
+      <!--语句指南：避免写复杂的模板语句。-->
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--绑定语法概览-->
+    <!--单向从数据源到视图目标 | {{expression}}                | 插值表达式，Property，Attribute，类，样式-->
+    <!--                       | [target]="expression"         |-->
+    <!--                       | bind-target="expression"      |-->
+    <!--单向从视图目标到数据源 | (target)="statement"          | 事件-->
+    <!--                       | on-target="statement"         |-->
+    <!--双向                   | [(target)]="expression"       | 双向-->
+    <!---                      | bindon-target="expression"    |-->
+    <input [disabled]="true">
+    <!--数据绑定的是DOM property，而不是HTML attribute-->
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--属性绑定：把视图元素的属性 (property) 设置为模板表达式-->
+    <!--元素的 property，组件的 property，指令的 property-->
+    <input [disabled]="isDisabled">
+    <div>
+      <!--属性绑定是单向数据绑定-->
+    </div>
+  </div>
+</div>

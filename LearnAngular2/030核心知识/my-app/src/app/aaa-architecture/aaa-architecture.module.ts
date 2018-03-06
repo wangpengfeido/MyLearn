@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {AcaComponentsComponent} from './aca-components.component';
 import {AdaDataBindingComponent} from './ada-data-binding/ada-data-binding.component';
 import { AeaDirectiveComponent } from './aea-directive/aea-directive.component';
+import { AfaServiceComponent } from './afa-service/afa-service.component';
 
 //定义一个模块
 @NgModule({
@@ -16,6 +17,7 @@ import { AeaDirectiveComponent } from './aea-directive/aea-directive.component';
     AcaComponentsComponent,
     AdaDataBindingComponent,
     AeaDirectiveComponent,
+    AfaServiceComponent,
   ],
   exports: [AcaComponentsComponent]
 })
