@@ -1,0 +1,15 @@
+.body {
+  display: flex;
+}
+
+.body .left-menu {
+  width: 200px;
+}
+
+.body .right-content {
+  flex-grow: 1;
+}
+
+.active{
+  color:olivedrab;
+}

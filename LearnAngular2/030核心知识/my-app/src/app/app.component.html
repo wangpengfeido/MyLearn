@@ -1,5 +1,31 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h1>
+<nav>
   angular核心知识
-</h1>
+</nav>
+<div class="body">
+  <div class="left-menu">
+    <ul>
+      <li>
+        <a href="javascript:void(0)">架构</a>
+        <ul>
+          <li><a routerLink="/architecture" routerLinkActive="active">组件、模版、元数据</a></li>
+          <li><a routerLink="/dataBinding" routerLinkActive="active">数据绑定</a></li>
+          <li><a routerLink="/directive" routerLinkActive="active">指令</a></li>
+          <li><a routerLink="/service" routerLinkActive="active">服务、依赖注入</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0)">模版与数据绑定</a>
+        <ul>
+          <li><a routerLink="/displayingData" routerLinkActive="active">显示数据</a></li>
+          <li><a routerLink="/templateSyntax" routerLinkActive="active">模版语法</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="right-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
 
