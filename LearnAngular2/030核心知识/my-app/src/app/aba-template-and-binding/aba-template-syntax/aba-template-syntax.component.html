@@ -4,6 +4,8 @@
     <div>a:{{a}}</div>
     <div>{{1+1+getVal()}}</div>
   </div>
+  <br/><br/><br/>
+
   <div>
     <!--模版表达式-->
     <!--JavaScript 中那些具有或可能引发副作用的表达式是被禁止的，包括：1,赋值 (=, +=, -=, ...);2,new运算符;3,使用;或,的链式表达式;4,自增或自减操作符 (++和--)-->
@@ -62,6 +64,212 @@
     <input [disabled]="isDisabled">
     <div>
       <!--属性绑定是单向数据绑定-->
+    </div>
+    <div>
+      <!--包裹在方括号中的元素属性名标记着目标属性-->
+      <!--也可以使用bind-前缀的可选形式-->
+      <input bind-disabled="isDisabled">
+    </div>
+    <div>
+      <!--消除副作用-->
+      <!--模板表达式中一般应该只绑定数据属性和那些只返回值而不做其它事情的方法，防止执行方法时又改变的绑定的值-->
+    </div>
+    <div>
+      <!--返回恰当类型的值-->
+    </div>
+    <div>
+      <!--别忘了方括号-->
+    </div>
+    <div>
+      <!--一次性字符串初始化-->
+      <!--当满足下列条件时，应该省略方括号：1.目标属性接受字符串值。2.字符串是个固定值，可以直接合并到模块中。3.这个初始值永不改变。-->
+    </div>
+    <div>
+      <!--当渲染内容是字符串时，可以使用插值表达式-->
+      <input disabled="{{isDisabled}}">
+    </div>
+    <div>
+      <!--内容安全-->
+      <!--属性绑定和插值表达式，不会允许带有script标签的html泄漏-->
+      <div [title]="'内容<script>alert(\'aaa\')</script>安全'">内容安全</div>
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--attribute、class 和 style 绑定-->
+    <div>
+      <!--attribute绑定，适用于没有property的attribute-->
+      <!--使用[attr.attribute]语法-->
+      <table border="1">
+        <tr>
+          <td [attr.colspan]="1+1">2</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <!--css类绑定-->
+      <!--全有全无类绑定，class的设置会完全被覆盖，类似于属性绑定-->
+      <div class="red bold" [class]="'green'">全有全无类绑定</div>
+      <!--绑定到特定类名，使用[class.className]语法-->
+      <div class="red bold" [class.red]="false">绑定到特定类名</div>
+      <!--注：通常更喜欢使用 NgClass指令 来同时管理多个类名-->
+    </div>
+    <div>
+      <!--样式绑定-->
+      <!--使用[style.style-property]语法，或带单位[style.style-property.单位]-->
+      <div [style.background-color]="'red'" [style.fontSize.px]="10+10">样式绑定</div>
+      <!--通常更喜欢使用 NgStyle指令 来同时设置多个内联样式-->
+      <!--样式属性命名方法可以用中线命名法，也可以用驼峰式命名法-->
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--事件绑定-->
+    <!--使用(event)语法，或者on-event语法-->
+    <button (click)="handleClick()">点击</button>
+    <button on-click="handleClick()">点击</button>
+    <div>
+      <!--$event 和事件处理语句-->
+      <!--如果目标事件是原生 DOM 元素事件， $event就是 DOM事件对象-->
+      <!--如果事件属于指令（组件），那么$event具体是什么由指令决定-->
+      <input [value]="aaa" (input)="aaa=$event.target.value">{{aaa}}
+    </div>
+    <div>
+      <!--使用 EventEmitter 实现自定义事件-->
+      <aba-aaa (myEvent)="handleEvent($event)"></aba-aaa>
+    </div>
+    <div>
+      <!--模板语句有副作用：它可能会改变模型的值，这些改变会更新到视图，并向系统其他地方扩散-->
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--双向数据绑定-->
+    <aba-aba [(num)]="number1"></aba-aba>
+    {{number1}}
+    <!--双向绑定语法实际上是属性绑定和事件绑定的语法糖-->
+    <aba-aba [num]="number2" (numChange)="number2=$event"></aba-aba>
+    {{number2}}
+    <!--原生 HTML 元素不遵循x值和xChange事件的模式,Angular 以 NgModel 指令为桥梁，允许在表单元素上使用双向数据绑定-->
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--内置属性型指令-->
+    <div>
+      <!--ngClass，同时添加或移除多个 CSS 类-->
+      <div [ngClass]="currentClass">ngClass</div>
+    </div>
+    <div>
+      <!--ngStyle，同时设置多个内联样式-->
+      <div [ngStyle]="currentStyle">ngStyle</div>
+    </div>
+    <div>
+      <!--ngModel，双向绑定-->
+      <!--在使用ngModel指令进行双向数据绑定之前，我们必须导入FormsModule并把它添加到Angular模块的imports列表中-->
+      <input [(ngModel)]="b">{{b}}
+      <!--它相当于-->
+      <input [value]="b" (input)="b=$event.target.value">
+      <input [ngModel]="b" (ngModelChange)="b=$event">
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--内置结构型指令-->
+    <div>
+      <!--ngIf-->
+      <input type="checkbox" [(ngModel)]="isShow">
+      <span *ngIf="isShow">ngIf</span>
+      <!--ngIf可防范空指针错误，下面语句并不会导致错误-->
+      <div *ngIf="false">{{null.a}}</div>
+    </div>
+    <div>
+      <!--ngFor-->
+      <ul>
+        <li *ngFor="let item of list2">{{item.index}}</li>
+      </ul>
+    </div>
+    <div>
+      <!--NgFor 微语法-->
+      <!--赋值给*ngFor的字符串不是模板表达式。 它是一个微语法-->
+    </div>
+    <div>
+      <!--模板输入变量-->
+      <!--上面的item就是模板输入变量-->
+      <!--我们可以在ngFor的宿主元素（及其子元素）中引用模板输入变量-->
+    </div>
+    <div>
+      <!--带索引的*ngFor-->
+      <ul>
+        <li *ngFor="let item of list2;let i=index">{{i}}</li>
+      </ul>
+    </div>
+    <div>
+      <!--带trackBy的*ngFor-->
+      <ul>
+        <li *ngFor="let item of list2;trackBy:index">{{item.index}}，{{item.str}}</li>
+      </ul>
+      <button (click)="list2[1].index=10">改变index</button>
+      <button (click)="list2[1].str='yyyyyyyyy'">改变str</button>
+      <button (click)="list2.push({index:2,str:'zzz'})">添加</button>
+    </div>
+    <div>
+      <!--ngSwitch-->
+      <input type="radio" [(ngModel)]="switchValue" [value]="1">
+      <input type="radio" [(ngModel)]="switchValue" [value]="2">
+      <input type="radio" [(ngModel)]="switchValue" [value]="3">
+      <div [ngSwitch]="switchValue">
+        <div *ngSwitchCase="1">1</div>
+        <div *ngSwitchCase="2">2</div>
+        <div *ngSwitchCase="3">3</div>
+        <div *ngSwitchDefault>100</div>
+      </div>
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--模板引用变量-->
+    <!--模板引用变量通常用来引用模板中的某个DOM元素，它还可以引用Angular组件或指令或Web Component。-->
+    <input #ccc><button (click)="console(ccc)">console</button>
+    <aba-aaa #ddd></aba-aaa><button (click)="console(ddd)">console</button>
+    <div>
+      <!--模板引用变量怎么得到它的值？-->
+      <!--大多数情况下，Angular会把模板引用变量的值设置为声明它的那个元素-->
+      <!--不过，指令也可以修改这种行为，让这个值引用到别处，比如它自身。 NgForm指令就是这么做的。-->
+      <form (ngSubmit)="console(eeeForm)" #eeeForm="ngForm">
+        <input type="text" name="eee_input">
+        <input type="submit">
+      </form>
+      <!--如果你没有导入过FormsModule，Angular就不会控制这个表单，那么它就是一个HTMLFormElement实例。 这里的heroForm实际上是一个Angular NgForm 指令的引用， 因此具备了跟踪表单中的每个控件的值和有效性的能力。-->
+    </div>
+    <div>
+      <!--模板引用变量的作用范围是整个模板。-->
+      <!--我们也可以用ref-前缀代替#。-->
+      <input ref-fff><button (click)="console(fff)">console</button>
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--输入输出属性 ( @Input 和 @Output )-->
+    <!--目标是在=左侧的部分， 源则是在=右侧的部分。-->
+    <aba-aca [inputOne]="1" (outputOne)="switchValue=1" [inputTwo]="2" (outputTwo)="console($event)"></aba-aca>
+    <div>
+      <!--输入属性通常接收数据值。 输出属性暴露事件生产者，如EventEmitter对象。-->
+    </div>
+    <div>
+      <!--属性别名-->
+      <!--让输入/输出属性的公开名字不同于内部名字-->
+      <aba-aca [valueThree]="3" (clickThree)="console($event)" [valueFour]="4" (clickFour)="console($event)"></aba-aca>
     </div>
   </div>
 </div>
