@@ -21,12 +21,8 @@ import { AfaServiceComponent } from './afa-service/afa-service.component';
     AeaDirectiveComponent,
     AfaServiceComponent,
   ],
-<<<<<<< HEAD
   //declarations 的子集，可用于其它模块的组件模板
-  exports: [AbaModulesComponent]
-=======
   exports: [AcaComponentsComponent]
->>>>>>> 12ddf2d5774f2c6779bd367d2b5f1419de14386d
 })
 export class AaaArchitectureModule {
 }
