@@ -9,6 +9,8 @@ import {AfaServiceComponent} from "./aaa-architecture/afa-service/afa-service.co
 
 import {AaaDisplayingDataComponent} from "./aba-template-and-binding/aaa-displaying-data/aaa-displaying-data.component";
 import {AbaTemplateSyntaxComponent} from "./aba-template-and-binding/aba-template-syntax/aba-template-syntax.component";
+import {AcaLifecycleHookComponent} from "./aba-template-and-binding/aca-lifecycle-hook/aca-lifecycle-hook.component";
+import {AdaComponentCommunicationComponent} from "./aba-template-and-binding/ada-component-communication/ada-component-communication.component";
 
 const routes: Routes = [
   {
@@ -29,6 +31,12 @@ const routes: Routes = [
   }, {
     path: 'templateSyntax',
     component: AbaTemplateSyntaxComponent,
+  }, {
+    path: 'lifecycleHook',
+    component: AcaLifecycleHookComponent,
+  },{
+    path: 'componentCommunication',
+    component: AdaComponentCommunicationComponent,
   }
 ];
 

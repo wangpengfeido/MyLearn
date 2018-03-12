@@ -239,8 +239,10 @@
   <div>
     <!--模板引用变量-->
     <!--模板引用变量通常用来引用模板中的某个DOM元素，它还可以引用Angular组件或指令或Web Component。-->
-    <input #ccc><button (click)="console(ccc)">console</button>
-    <aba-aaa #ddd></aba-aaa><button (click)="console(ddd)">console</button>
+    <input #ccc>
+    <button (click)="console(ccc)">console</button>
+    <aba-aaa #ddd></aba-aaa>
+    <button (click)="console(ddd)">console</button>
     <div>
       <!--模板引用变量怎么得到它的值？-->
       <!--大多数情况下，Angular会把模板引用变量的值设置为声明它的那个元素-->
@@ -254,7 +256,8 @@
     <div>
       <!--模板引用变量的作用范围是整个模板。-->
       <!--我们也可以用ref-前缀代替#。-->
-      <input ref-fff><button (click)="console(fff)">console</button>
+      <input ref-fff>
+      <button (click)="console(fff)">console</button>
     </div>
   </div>
   <br/><br/><br/>
@@ -272,4 +275,47 @@
       <aba-aca [valueThree]="3" (clickThree)="console($event)" [valueFour]="4" (clickFour)="console($event)"></aba-aca>
     </div>
   </div>
+  <br/><br/><br/>
+
+  <div>
+    <!--模板表达式操作符-->
+    <div>
+      <!--管道操作符-->
+      <div>{{'hi'|uppercase}}</div>
+      <div>
+        <!--连用-->
+        {{'hi'|uppercase|lowercase}}
+      </div>
+      <div>
+        <!--使用参数-->
+        {{'2018-03-12 15:08'|date:'yyyy年MM月dd日'}}
+      </div>
+      <div>
+        <!--json管道-->
+        {{{a:'aaa',b:'bbb'}|json}}
+      </div>
+    </div>
+    <div>
+      <!--安全导航操作符 ( ?. ) 和空属性路径-->
+      <!--它的作用是在null或undefined上取属性时保护渲染器不至于崩溃-->
+      安全导航操作符:{{null?.a}}
+      <!--用NgIf或&&操作符也可以解决这样的问题，但是会显得笨重-->
+    </div>
+    <div>
+      <!--非空断言操作符-->
+      <!--在typescript开启--strictNullChecks标志时，告诉编译器对此语句不做非空检查-->
+      <div *ngIf="notNullValue">
+        非空断言操作符:{{notNullValue!.a}}
+      </div>
+    </div>
+    <div>
+      <!--$any类型转换-->
+      <!--它将一个变量转换为any类型，从而typescript不会检查属性是否是变量的成员-->
+      <div>
+        <!--$any:{{$any(anyValue).b}}-->
+      </div>
+    </div>
+  </div>
+  <br/><br/><br/>
+
 </div>

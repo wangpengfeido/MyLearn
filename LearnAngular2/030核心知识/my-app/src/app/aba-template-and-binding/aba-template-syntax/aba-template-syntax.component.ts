@@ -60,7 +60,11 @@ export class AbaTemplateSyntaxComponent implements OnInit {
   }];
   switchValue = 0;
 
-  console(param){
-    console.log('...',param);
+  notNullValue = {a: 'aaa'};
+
+  anyValue: { a: string } = {a: 'aaa'};
+
+  console(param) {
+    console.log('...', param);
   }
 }
