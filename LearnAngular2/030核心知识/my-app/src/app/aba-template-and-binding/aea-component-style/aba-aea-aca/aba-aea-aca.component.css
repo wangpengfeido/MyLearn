@@ -1,0 +1,5 @@
+.blue{
+  background-color: blue;
+}
+/*在css中使用import语法*/
+@import "./importCss.css";

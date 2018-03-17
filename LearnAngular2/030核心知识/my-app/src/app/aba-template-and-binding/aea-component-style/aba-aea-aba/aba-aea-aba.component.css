@@ -1,0 +1,17 @@
+/*特殊的选择器*/
+/*:host伪类选择器，用来选择组件宿主元素中的元素*/
+:host {
+  display: block;
+  border: 1px solid black;
+}
+
+/*要把宿主样式作为条件，就要像函数一样把其它选择器放在:host后面的括号中。*/
+:host(:hover) {
+  border: 1px dotted blue;
+}
+
+/*:host-context 选择器。用来选择来自组件视图外部的条件。*/
+/*如下：组件被包裹在theme-light类中*/
+:host-context(.theme-light){
+  background-color: aquamarine;
+}

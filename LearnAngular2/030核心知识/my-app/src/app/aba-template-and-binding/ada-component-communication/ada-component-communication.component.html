@@ -1,5 +1,40 @@
 <div>
-  <aba-ada-aaa [a]="valueOne" [b]="valueTwo"></aba-ada-aaa>
+  <aba-ada-aaa [a]="valueOne" [b]="valueTwo" (testEvent)="eventHandler($event)" #abaAdaAaa></aba-ada-aaa>
   valueOne.x:<input [(ngModel)]="valueOne.x">
-  valueTwo.x:<input [(ngModel)]="valueTwo.x">
+  valueTwo:<input [(ngModel)]="valueTwo">
+  <br/><br/><br/>
+
+  <div>
+    <!--父组件与子组件通过本地变量互动-->
+    <div>b in 子组件:{{abaAdaAaa.b}}</div>
+    <div>_b in 子组件:{{abaAdaAaa._b}}</div>
+    <div>
+      <button (click)="consoleLog(abaAdaAaa.b)">console</button>
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <aba-ada-aba></aba-ada-aba>
+    <aba-ada-aba></aba-ada-aba>
+    <div>
+      <b>父组件中：</b>
+      <div>
+        <span>{{getCountOne()}}</span>
+        <button (click)="counterOneAdd()">+</button>
+        <button (click)="counterOneSub()">-</button>
+      </div>
+      <div>
+        <span>{{getCountTwo()}}</span>
+        <button (click)="counterTwoAdd()">+</button>
+        <button (click)="counterTwoSub()">-</button>
+      </div>
+    </div>
+  </div>
+  <br/><br/><br/>
+
+  <div>
+    <aba-ada-aca></aba-ada-aca>
+    <button (click)="consoleCountInService()">consoleCountInService</button>
+  </div>
 </div>

@@ -1,0 +1,94 @@
+<div>
+  <div>
+    <div *ngIf="true">this is show</div>
+    <div *ngIf="false">this is hide</div>
+  </div>
+  <div>
+    <!--
+      *前缀
+      *前缀是一个语法糖，Angular把*ngIf 属性 翻译成一个<ng-template> 元素 并用它来包裹宿主元素
+      如：
+      <div *ngIf="true" class="name">{{hero.name}}</div>
+      相当于：
+      <ng-template [ngIf]="true">
+        <div class="name">{{hero.name}}</div>
+      </ng-template>
+    -->
+    <!--ngFor和ngSwitch都遵循这个规则-->
+    <!--应该优先使用*语法糖形式。如果找不到单一的元素来应用该指令，可以使用<ng-container>作为该指令的容器-->
+  </div>
+  <div>
+    <div *ngFor="let item of list;let i=index;let odd=odd;trackBy:number" [class.odd]="odd">
+      {{i}},{{item.number}},{{item.str}}
+    </div>
+    <div>
+      <!--
+      微语法
+      let关键字声明一个模板输入变量，我们会在模板中引用它。本例子中，这个输入变量就是item、i和odd。 解析器会把let item、let i和let odd翻译成命名变量let-item、let-i和let-odd。
+
+      微语法解析器接收of和trackBy，把它们首字母大写（of -> Of, trackBy -> TrackBy）， 并且给它们加上指令的属性名（ngFor）前缀，最终生成的名字是ngForOf和ngForTrackBy。
+      这是014两个NgFor的输入属性，指令据此了解到列表是list，而track-by函数是number。
+
+      NgFor指令在列表上循环，每个循环中都会设置和重置它自己的上下文对象上的属性。 这些属性包括index和odd以及一个特殊的属性名$implicit（隐式变量）。
+
+      let-i和let-odd变量是通过let i=index和let odd=odd来定义的。 Angular把它们设置为上下文对象中的index和odd属性的当前值。
+
+      The context property for let-hero wasn't specified. Its intended source is implicit. Angular sets let-hero to the value of the context's $implicit property which NgFor has initialized with the hero for the current iteration.
+
+      API参考手册中描述了NgFor指令的其它属性和上下文属性。
+
+      NgFor是由NgForOf指令来实现的。请参阅NgForOf API reference来了解NgForOf指令的更多属性及其上下文属性。
+      -->
+    </div>
+
+  </div>
+  <br/><br/><br/>
+  <div>
+    <!--NgSwitch 实际上是一组相互合作的指令：NgSwitch、NgSwitchCase 和 NgSwitchDefault。-->
+    <div [ngSwitch]="switchValue">
+      <div *ngSwitchCase="'a'">aaa</div>
+      <div *ngSwitchCase="'b'">bbb</div>
+      <div *ngSwitchDefault>I don't know</div>
+    </div>
+  </div>
+  <br/><br/><br/>
+  <div>
+    <!--<ng-template> 它永远不会直接显示出来-->
+    <!--如果没有使用结构型指令，而仅仅把一些别的元素包装进<ng-template>中，那些元素就是不可见的。结构型指令会让<ng-template>正常工作-->
+    <P>hello,</P>
+    <ng-template>
+      <p>amy,</p>
+    </ng-template>
+    <p>how are you?</p>
+  </div>
+  <br/><br/><br/>
+  <div>
+    <!--<ng-container>是一个分组元素，但它不会污染样式或元素布局，因为 Angular 压根不会把它放进 DOM 中-->
+    <!--请比较以下不同-->
+    <div>
+      <p>hello <span *ngIf="true">world</span></p>
+      <p>hello
+        <ng-container *ngIf="true">world</ng-container>
+      </p>
+    </div>
+    <div>
+      <select>
+          <span *ngFor="let item of list">
+            <option value="item.number">{{item.str}}</option>
+          </span>
+      </select>
+      <select>
+        <ng-container *ngFor="let item of list">
+          <option value="item.number">{{item.str}}</option>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+  <br/><br/><br/>
+  <div>
+    <button (click)="boolValue=!boolValue">change boolean</button>
+    <div *abaAhaAaa="boolValue">
+      isShow
+    </div>
+  </div>
+</div>

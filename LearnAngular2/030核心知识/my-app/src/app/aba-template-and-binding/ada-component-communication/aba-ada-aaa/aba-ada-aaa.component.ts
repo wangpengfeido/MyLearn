@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'aba-ada-aaa',
@@ -19,10 +19,11 @@ export class AbaAdaAaaComponent implements OnInit {
   private _b;
 
   //用setter截听属性变化
+  //注意：这样只能截听引用的变化，而不能截听属性的变化
   //TODO：测试
   @Input()
   set b(b: any) {
-    this._b = b.x + b.y;
+    this._b = b + '2333';
   }
 
   get b(): any {
@@ -30,7 +31,16 @@ export class AbaAdaAaaComponent implements OnInit {
   }
 
   //用OnChanges截听属性变化，这种适合截听多个属性
-  // ngOnChanges(changes){
-  //   console.log(changes);
-  // }
+  //同样，只能截听引用的变化，而不能截听属性的变化
+  ngOnChanges(changes){
+    console.log(changes);
+  }
+
+  //父组件监听子组件的事件
+  //注册事件
+  @Output() testEvent=new EventEmitter<any>();
+  buttonClick(){
+    //触发事件
+    this.testEvent.emit(10);
+  }
 }

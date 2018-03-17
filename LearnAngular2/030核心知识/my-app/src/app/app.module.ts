@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 
 import {AaaArchitectureModule} from "./aaa-architecture/aaa-architecture.module";
 import {AbaTemplateAndBindingModule} from "./aba-template-and-binding/aba-template-and-binding.module";
+import {AbaAfaInsertOneComponent} from "./aba-template-and-binding/afa-dynamic-component/aba-afa-insert-one/aba-afa-insert-one.component";
 
 
 @NgModule({

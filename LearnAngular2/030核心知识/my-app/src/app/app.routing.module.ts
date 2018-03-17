@@ -11,6 +11,10 @@ import {AaaDisplayingDataComponent} from "./aba-template-and-binding/aaa-display
 import {AbaTemplateSyntaxComponent} from "./aba-template-and-binding/aba-template-syntax/aba-template-syntax.component";
 import {AcaLifecycleHookComponent} from "./aba-template-and-binding/aca-lifecycle-hook/aca-lifecycle-hook.component";
 import {AdaComponentCommunicationComponent} from "./aba-template-and-binding/ada-component-communication/ada-component-communication.component";
+import {AeaComponentStyleComponent} from "./aba-template-and-binding/aea-component-style/aea-component-style.component";
+import {AfaDynamicComponentComponent} from "./aba-template-and-binding/afa-dynamic-component/afa-dynamic-component.component";
+import {AgaAttributeDirectiveComponent} from "./aba-template-and-binding/aga-attribute-directive/aga-attribute-directive.component";
+import {AhaStructuralDirectivesComponent} from "./aba-template-and-binding/aha-structural-directives/aha-structural-directives.component";
 
 const routes: Routes = [
   {
@@ -37,6 +41,18 @@ const routes: Routes = [
   },{
     path: 'componentCommunication',
     component: AdaComponentCommunicationComponent,
+  },{
+    path: 'componentStyle',
+    component: AeaComponentStyleComponent,
+  },{
+    path: 'dynamicComponent',
+    component: AfaDynamicComponentComponent,
+  },{
+    path: 'attributeDirective',
+    component: AgaAttributeDirectiveComponent,
+  },{
+    path: 'structuralDirectives',
+    component: AhaStructuralDirectivesComponent,
   }
 ];
 
