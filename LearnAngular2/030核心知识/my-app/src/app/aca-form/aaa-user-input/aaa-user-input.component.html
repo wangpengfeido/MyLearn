@@ -1,0 +1,39 @@
+<div>
+  <!--绑定用户输入事件-->
+  <button (click)="eventHandler()">绑定用户输入事件</button>
+</div>
+<br/><br/><br/>
+<div>
+  <div>
+    <!--使用$event取得用户输入-->
+    <input (keyup)="eventHandler($event)">
+  </div>
+  <div>
+    <!--$event的类型，在响应方法中指定了$event的类型-->
+    <input (keyup)="keyUpEventHandler($event)">
+  </div>
+</div>
+<br/><br/><br/>
+<div>
+  <!--从一个模板引用变量中获得用户输入-->
+  <div>
+    <!--必须绑定一个事件才能工作-->
+    <input #testOne (keyup)="0">
+    <div>{{testOne.value}}</div>
+  </div>
+  <div>
+    <input #testTwo (keyup)="eventHandler(testTwo.value)">
+  </div>
+</div>
+<br/><br/><br/>
+<div>
+  <h4>按键事件过滤</h4>
+  <input (keyup.enter)="keyUpEventHandler()">
+</div>
+<br/><br/><br/>
+<div>
+  <h4>失去焦点事件</h4>
+  <input (blur)="eventHandler()">
+</div>
+
+

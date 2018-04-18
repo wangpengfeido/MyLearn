@@ -13,7 +13,9 @@ import {AaaAfaService} from "./aaa-afa.service";
 })
 export class AfaServiceComponent implements OnInit {
 
-  constructor(private aaaAfa: AaaAfaService) {
+  constructor(
+    private aaaAfa: AaaAfaService
+  ) {
   }
 
   ngOnInit() {

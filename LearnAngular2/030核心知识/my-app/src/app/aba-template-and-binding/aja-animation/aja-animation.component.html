@@ -1,0 +1,27 @@
+<div>
+  <div [@changeState]="state" *ngIf="isShow">使用trigger动画</div>
+  <div>
+    <button (click)="state=true">true</button>
+    <button (click)="state=false">false</button>
+    <button (click)="state='a'">a</button>
+    <button (click)="state='b'">b</button>
+    <button (click)="state='c'">c</button>
+    <button (click)="state='d'">d</button>
+    <button (click)="isShow=!isShow">change show:{{isShow}}</button>
+  </div>
+  <br/><br/><br/>
+
+  <div [@animateTwo] *ngIf="isShow2">hello</div>
+  <button (click)="isShow2=!isShow2">change show:{{isShow2}}</button>
+  <br/><br/><br/>
+
+  <div [@animateThree] *ngIf="isShow3">hello</div>
+  <button (click)="isShow3=!isShow3">change show:{{isShow3}}</button>
+  <br/><br/><br/>
+
+  <div [@animateFour] *ngIf="isShow4" (@animateFour.start)="startAnimation($event)" (@animateFour.done)="endAnimation($event)">
+    hello
+  </div>
+  <button (click)="isShow4=!isShow4">change show:{{isShow4}}</button>
+  <br/><br/><br/>
+</div>

@@ -15,6 +15,9 @@ import {AeaComponentStyleComponent} from "./aba-template-and-binding/aea-compone
 import {AfaDynamicComponentComponent} from "./aba-template-and-binding/afa-dynamic-component/afa-dynamic-component.component";
 import {AgaAttributeDirectiveComponent} from "./aba-template-and-binding/aga-attribute-directive/aga-attribute-directive.component";
 import {AhaStructuralDirectivesComponent} from "./aba-template-and-binding/aha-structural-directives/aha-structural-directives.component";
+import {AjaAnimationComponent} from "./aba-template-and-binding/aja-animation/aja-animation.component";
+import {AaaUserInputComponent} from "./aca-form/aaa-user-input/aaa-user-input.component";
+import {AiaPipeComponent} from "./aba-template-and-binding/aia-pipe/aia-pipe.component";
 
 const routes: Routes = [
   {
@@ -38,21 +41,30 @@ const routes: Routes = [
   }, {
     path: 'lifecycleHook',
     component: AcaLifecycleHookComponent,
-  },{
+  }, {
     path: 'componentCommunication',
     component: AdaComponentCommunicationComponent,
-  },{
+  }, {
     path: 'componentStyle',
     component: AeaComponentStyleComponent,
-  },{
+  }, {
     path: 'dynamicComponent',
     component: AfaDynamicComponentComponent,
-  },{
+  }, {
     path: 'attributeDirective',
     component: AgaAttributeDirectiveComponent,
-  },{
+  }, {
     path: 'structuralDirectives',
     component: AhaStructuralDirectivesComponent,
+  }, {
+    path: 'pipe',
+    component: AiaPipeComponent,
+  }, {
+    path: 'animation',
+    component: AjaAnimationComponent,
+  }, {
+    path: 'userInput',
+    component: AaaUserInputComponent,
   }
 ];
 

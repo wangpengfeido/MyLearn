@@ -1,0 +1,57 @@
+<div>
+  <!--使用管道-->
+  <div>{{myDate|date}}</div>
+  <!--传递参数-->
+  <div>{{myDate|date:'yyyy-MM-dd'}}</div>
+  <!--链式管道-->
+  <div>{{myDate|date|uppercase}}</div>
+</div>
+<br/><br/><br/>
+<div>
+  <h4>使用自定义管道</h4>
+  <div>{{myNum}}</div>
+  <div>{{myNum|abaAiaAaaPipe}}</div>
+  <!--管道会检测变化-->
+  <button (click)="myNum=myNum+1">加</button>
+  <!--管道可以用在插值表达式中，或者微语法中如ngFor-->
+  <!--<div>{{ (myNum|abaAiaAaaPipe)+100}}</div>-->
+</div>
+<br/><br/><br/>
+<div>
+  <!--在纯管道中，管道只能检测到纯改变，即原始类型或对象引用的更改-->
+  <div>{{myDate2.getTime()}}</div>
+  <div>它没有变化：{{myDate2|date}}</div>
+  <button (click)="myDate2.setDate(myDate2.getDate()+1);">改变</button>
+  <div>它有变化：{{myDate2|abaAiaAbaImpureDate}}。因为这是一个非纯管道</div>
+  <!--非纯管道会在变更检测周期中被执行。因此它的开销可能会非常大-->
+</div>
+<br/><br/><br/>
+<div>
+  <h4>ansy管道（非纯）</h4>
+  <!--ansy管道可以订阅一个observable-->
+  <div>{{mySubject|async}}</div>
+  <button (click)="mySubjectNext()">next</button>
+</div>
+<br/><br/><br/>
+<div>
+  <h4>带缓存的管道</h4>
+  <input [(ngModel)]="inputText">
+  <div>{{inputText|abaAiaAcaCachePipe}}</div>
+  <div>{{inputText|abaAiaAcaCachePipe}}</div>
+  <!--对于非纯管道，每次绑定都会生成一个管道实例，每个管道都有自己的服务调用和缓存-->
+  <!--而对于纯管道，所有绑定共享一个管道实例-->
+  <!--可以在abaAiaAcaCachePipe中改变pure标志来实验-->
+  <!--另外，非纯管道会实时改变返回结果的变化-->
+</div>
+<br/><br/><br/>
+<div>
+  <h4>json管道</h4>
+  <div>{{myJson|json}}</div>
+</div>
+<div>
+  <!--纯管道必须用纯函数实现，否则将报错误：表达式在被检查后被变更-->
+</div>
+<div>
+  <!--因为一些问题，angular本身不提供FilterPipe(过滤)和OrderByPipe(排序)-->
+</div>
+
