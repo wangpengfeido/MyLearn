@@ -1,0 +1,48 @@
+<div>
+  <!--使用ngModel进行双向数据绑定-->
+  <div>
+    {{a}}
+    <input [(ngModel)]="a">
+  </div>
+  <div>
+    {{b}}
+    <select [(ngModel)]="b">
+      <option *ngFor="let item of selectList" [value]="item.value">{{item.name}}</option>
+    </select>
+  </div>
+</div>
+<br/><br/><br/>
+<div>
+  <h4>ngForm</h4>
+  <form #formOne="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <!--在form中使用ngModel必须指定name-->
+      <input name="formOneC" #formOneC #formOneCModel="ngModel" [(ngModel)]="c" required>
+    </div>
+    <div>
+      <!--表单控件会的不同状态会被添加不同的css类-->
+      <!--控件被访问过。ng-touched    ng-untouched-->
+      <!--控件的值变化了。ng-dirty    ng-pristine-->
+      <!--控件的值有效。ng-valid    ng-invalid-->
+      {{formOneC.className}}
+    </div>
+    <div>
+      <!--使用ngModel的模版变量-->
+      <p>formOneCModel.touched:{{formOneCModel.touched}}</p>
+      <p>formOneCModel.untouched:{{formOneCModel.untouched}}</p>
+      <p>formOneCModel.dirty:{{formOneCModel.dirty}}</p>
+      <p>formOneCModel.pristine:{{formOneCModel.pristine}}</p>
+      <p>formOneCModel.valid:{{formOneCModel.valid}}</p>
+      <p>formOneCModel.invalid:{{formOneCModel.invalid}}</p>
+    </div>
+    <div>
+      <!--使用NgModel.reset()方法重置表单-->
+      <button (click)="formOne.reset()">重置</button>
+    </div>
+    <div>
+      <!--提交表单（触发NgForm的NgSubmit事件）-->
+      <!--可以使用NgForm.form.valid控制表单验证不通过时禁止提交-->
+      <button type="submit" [disabled]="!formOne.form.valid">提交</button>
+    </div>
+  </form>
+</div>

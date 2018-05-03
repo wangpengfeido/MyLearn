@@ -18,6 +18,8 @@ import {AhaStructuralDirectivesComponent} from "./aba-template-and-binding/aha-s
 import {AjaAnimationComponent} from "./aba-template-and-binding/aja-animation/aja-animation.component";
 import {AaaUserInputComponent} from "./aca-form/aaa-user-input/aaa-user-input.component";
 import {AiaPipeComponent} from "./aba-template-and-binding/aia-pipe/aia-pipe.component";
+import {AbaTemplateDrivenFormComponent} from "./aca-form/aba-template-driven-form/aba-template-driven-form.component";
+import {AdaReactiveFormComponent} from "./aca-form/ada-reactive-form/ada-reactive-form.component";
 
 const routes: Routes = [
   {
@@ -65,6 +67,12 @@ const routes: Routes = [
   }, {
     path: 'userInput',
     component: AaaUserInputComponent,
+  }, {
+    path: 'templateDrivenForm',
+    component: AbaTemplateDrivenFormComponent,
+  }, {
+    path: 'reactiveForm',
+    component: AdaReactiveFormComponent,
   }
 ];
 

@@ -1,0 +1,121 @@
+<div>
+  <!--使用form control-->
+  <div>
+    <pre>formControlOne.value:{{formControlOne.value|json}}</pre>
+  </div>
+  <input [formControl]="formControlOne">
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--使用form group-->
+  <div>
+    <pre>formGroupOne.value:{{formGroupOne.value|json}}</pre>
+  </div>
+  <form [formGroup]="formGroupOne">
+    <!--使用form group需要添加formControlName，以关联到formgroup中的form control-->
+    <input formControlName="formControlOneOne">
+    <input formControlName="formControlOneTwo">
+  </form>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--使用form builder-->
+  <div>
+    <pre>formGroupTwo.value:{{formGroupTwo.value|json}}</pre>
+    <pre>formGroupTwo.status:{{formGroupTwo.status|json}}</pre>
+  </div>
+  <form [formGroup]="formGroupTwo">
+    <input formControlName="name">
+    <!--这里带表单验证-->
+    <input formControlName="phone">
+  </form>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--多级form group-->
+  <pre>formGroupNested.value:{{formGroupNested.value|json}}</pre>
+  <form [formGroup]="formGroupNested">
+    <input formControlName="name">
+    <!--需要使用formGroupName-->
+    <div formGroupName="address">
+      <input formControlName="country">
+      <input formControlName="province">
+    </div>
+  </form>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--查看form control的属性-->
+  <!--使用get方法-->
+  <div>formGroupNested.get('name').value:{{formGroupNested.get('name').value}}</div>
+  <div>formGroupNested.get('address.country').value:{{formGroupNested.get('address.country').value}}</div>
+  <!--可获取的属性有value值，status有效性，pristine是否未改变，dirty是否已改变，untouched，touched-->
+  <div>formGroupNested.get('name').status:{{formGroupNested.get('name').status}}</div>
+  <div>formGroupNested.get('name').pristine:{{formGroupNested.get('name').pristine}}</div>
+  <div>formGroupNested.get('name').dirty:{{formGroupNested.get('name').dirty}}</div>
+  <div>formGroupNested.get('name').untouched:{{formGroupNested.get('name').untouched}}</div>
+  <div>formGroupNested.get('name').touched:{{formGroupNested.get('name').touched}}</div>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--setValue与patchValue-->
+  <button (click)="callSetValue({name:'',address:{country:'',province:''}})">setValue</button>
+  <button (click)="callPatchValue({name:'',address:{country:'',province:''}})">patchValue</button>
+  <!--setValue与patchValue的不同在于，setValue必须与表单数据模型一致，而patchValue不必须-->
+  <button (click)="callSetValue({name:'',address:{country:''}})">setValue</button>
+  <button (click)="callPatchValue({name:'',address:{country:''}})">patchValue</button>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--调用reset方法-->
+  <!--reset会重置表单，包括touched,dirty等-->
+  <button (click)="callReset()">reset</button>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--调用setControl方法-->
+  <!--setControl会替换表单控件，而不是表单值-->
+  <button (click)="callSetControl({country:'',province:''})">SetControl</button>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--form array-->
+  {{formArray.value|json}}
+  <form [formGroup]="formArray">
+    <input formControlName="name">
+    <div formArrayName="addresses">
+      <!--使用ngFor循环显示formArray，注意ngFor的循环对象-->
+      <div *ngFor="let address of formArray.get('addresses').controls;let i=index" [formGroupName]="i">
+        <input formControlName="country">
+        <input formControlName="province">
+      </div>
+      <button type="button" (click)="addAddress()">添加</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
