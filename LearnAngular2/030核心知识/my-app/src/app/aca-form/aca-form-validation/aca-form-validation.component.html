@@ -1,0 +1,43 @@
+<div>
+  <!--模板驱动验证-->
+  <input #oneInput="ngModel" [(ngModel)]="one" required minlength="6">
+  <div>ngModel.valid:{{oneInput.valid}}</div>
+  <div>ngModel.errors.required:{{oneInput.errors?.required}}</div>
+  <div>ngModel.errors.minlength:{{oneInput.errors?.minlength|json}}</div>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--响应式表单验证-->
+  <input [formControl]="two">
+  <div>formControl.valid:{{two.valid}}</div>
+  <div>formControl.errors.required:{{two.errors?.required}}</div>
+  <div>formControl.errors.minlength:{{two.errors?.minlength|json}}</div>
+</div>
+<br/><br/><br/>
+
+<div>
+  <!--自定义表单验证-->
+  <div>
+    <div>同步</div>
+    <div>
+      <input [(ngModel)]="threeOneOne" #threeOneOneInput="ngModel" appSyncRegValidator="a">
+      {{threeOneOneInput.valid}}
+    </div>
+    <div>
+      <input [formControl]="threeOneTwo">
+      {{threeOneTwo.valid}}
+    </div>
+  </div>
+  <div>
+    <div>异步</div>
+    <div>
+      <input [(ngModel)]="threeTwoOne" #threeTwoOneInput="ngModel" appAsyncRegValidator="a">
+      {{threeTwoOneInput.valid}}
+    </div>
+    <div>
+      <input [formControl]="threeTwoTwo">
+      {{threeTwoTwo.valid}}
+    </div>
+  </div>
+</div>

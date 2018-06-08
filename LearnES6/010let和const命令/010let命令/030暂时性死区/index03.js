@@ -6,6 +6,7 @@ function fn1(x = 2, y = x) {
 }
 console.log(fn1());
 //////////////////////////////////////////////
+//这里是暂时性死区，因为y在声明之前被使用
 function fn(x = y, y = 2) {
     return [x,y];
 }

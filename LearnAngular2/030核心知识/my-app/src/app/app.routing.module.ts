@@ -20,6 +20,12 @@ import {AaaUserInputComponent} from "./aca-form/aaa-user-input/aaa-user-input.co
 import {AiaPipeComponent} from "./aba-template-and-binding/aia-pipe/aia-pipe.component";
 import {AbaTemplateDrivenFormComponent} from "./aca-form/aba-template-driven-form/aba-template-driven-form.component";
 import {AdaReactiveFormComponent} from "./aca-form/ada-reactive-form/ada-reactive-form.component";
+import {AcaFormValidationComponent} from "./aca-form/aca-form-validation/aca-form-validation.component";
+import {AeaDynamicFormComponent} from "./aca-form/aea-dynamic-form/aea-dynamic-form.component";
+import {AeaAaaComponent} from "./aea-bootstrap/aea-aaa/aea-aaa.component";
+import {AdaTypeOfFeatureModulesComponent} from "./afa-module/ada-type-of-feature-modules/ada-type-of-feature-modules.component";
+import {AbaDependencyInjectionComponent} from "app/aga-dependency-injection/aba-dependency-injection/aba-dependency-injection.component";
+import {AcaHierarchicalDependencyInjectorsComponent} from "./aga-dependency-injection/aca-hierarchical-dependency-injectors/aca-hierarchical-dependency-injectors.component";
 
 const routes: Routes = [
   {
@@ -71,8 +77,26 @@ const routes: Routes = [
     path: 'templateDrivenForm',
     component: AbaTemplateDrivenFormComponent,
   }, {
+    path: 'formValidation',
+    component: AcaFormValidationComponent,
+  }, {
     path: 'reactiveForm',
     component: AdaReactiveFormComponent,
+  }, {
+    path: 'dynamicForm',
+    component: AeaDynamicFormComponent,
+  }, {
+    path: 'aeaAaa',
+    component: AeaAaaComponent,
+  }, {
+    path: 'adaTypeOfFeatureModulesComponent',
+    component: AdaTypeOfFeatureModulesComponent,
+  }, {
+    path: 'AbaDependencyInjection',
+    component: AbaDependencyInjectionComponent,
+  }, {
+    path: 'AcaHierarchicalDependencyInjectorsComponent',
+    component: AcaHierarchicalDependencyInjectorsComponent,
   }
 ];
 
