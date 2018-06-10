@@ -12,11 +12,9 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'a'));
 // Object.assign()： 忽略enumerable为false的属性，只拷贝对象自身的可枚举的属性。
 
 ////////////////////////////////////////////////////////////////
-// 另外，ES6 规定，所有 Class 的原型的方法都是不可枚举的。
+// 另外，ES6 规定，所有 Class 的原型的方法都是不可枚举的。注：原型属性是可枚举的
 class C {
-    f(){}
+    f() {}
 }
-
-C.prototype = {x: 100};
-
-console.log(new C());
+C.prototype.z="zzz";
+console.log(Object.getOwnPropertyDescriptor(C.prototype,'f'));
