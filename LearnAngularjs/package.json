@@ -9,11 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "angular": "^1.5.9",
-    "angular-animate": "^1.5.9"
+    "angular": "^1.7.2",
+    "angular-animate": "^1.7.2"
   },
   "dependencies": {
-    "angular-ui-bootstrap": "^2.3.0",
+    "@uirouter/angularjs": "^1.0.18",
+    "angular-ui-bootstrap": "^2.5.6",
     "angular-ui-router": "^0.3.2"
   }
 }
