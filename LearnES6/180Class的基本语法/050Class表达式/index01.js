@@ -14,7 +14,6 @@ const MyClass2 = class {
         this.a = 2;
     }
 };
-// Me只在类内部起效，外部类名还是MyClass1
 console.log(new MyClass2());
 
 ///////////////////////////////////
