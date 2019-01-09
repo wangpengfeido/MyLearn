@@ -2,15 +2,17 @@ const webpack = require('webpack');
 const baseConfig = require('./webpack.config.base');
 
 baseConfig.entry = {
-  server: './entry-server.js',
+  client: './entry-client.js',
 };
 
-baseConfig.output.libraryTarget = 'commonjs2';
+baseConfig.output.chunkFilename = 'client-[id].js';
 
 baseConfig.module.rules.push(
-  {test: /\.css$/, use: [{loader: 'css-loader'}]}
+  {test: /\.css$/, use: [{loader: 'style-loader'}, {loader: 'css-loader'}]}
 );
 
 webpack(baseConfig).run((err, stats) => {
 });
+
+
 

@@ -1,5 +1,5 @@
 // 组件是可复用的 Vue 实例，且带有一个名字
-// 因为组件 Vue 实例，所以它们与 'new Vue' 接收相同的选项，例如 data、computed、watch、methods 以及生命周期钩子等。仅有的例外是像 el 这样根实例特有的选项。
+// 因为组件是 Vue 实例，所以它们与 'new Vue' 接收相同的选项，例如 data、computed、watch、methods 以及生命周期钩子等。仅有的例外是像 el 这样根实例特有的选项。
 Vue.component('button-counter', {
     template: `<button @click="count++">{{count}}</button>`,
     data: function () {
