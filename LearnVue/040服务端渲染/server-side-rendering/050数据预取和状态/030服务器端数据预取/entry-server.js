@@ -3,7 +3,7 @@ import {createApp} from "./app/app";
 export default context => {
 
   return new Promise((resolve, reject) => {
-    const {app, router} = createApp();
+    const {app, router, store} = createApp();
 
     router.push(context.url);
 
@@ -20,11 +20,13 @@ export default context => {
         }
       })).then(() => {
 
+        // 在所有预取钩子resolve后，store已填入应用程序所需的状态。
+        // 如果将状态加到上下文，并且renderer使用了template选项，状态会自动序列化为window.__INITIAL_STATE__
         context.state = store.state;
 
         resolve(app);
       }).catch(reject);
-    },reject);
+    }, reject);
   });
 
 

@@ -15,7 +15,7 @@ export function createRouter() {
         path: '/root',
         component: () => import('./root/root.vue'),
         children: [
-          {path: 'one', component: ()=>import('./root/one/one.vue')},
+          {path: 'one/:id', component: ()=>import('./root/one/one.vue')},
         ]
       },
     ]

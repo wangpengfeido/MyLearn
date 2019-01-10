@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div>this is root</div>
-    <router-view></router-view>
-  </div>
+    <div>
+        <div>this is root</div>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
@@ -12,6 +12,12 @@
     // 由于该方法需要在组件实例化之前调用，所以不能访问this，传入store和route实例
     asyncData({store, route}) {
       return store.dispach('fetchItem', route.params.id);
+    },
+    computed: {
+      // 使用store中的数据
+      item() {
+        return this.$store.state.items[this.$route.params.id];
+      }
     }
   }
 </script>

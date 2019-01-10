@@ -2,7 +2,7 @@
     <div>
         <div>this is app</div>
         <div>
-            <router-link to="/root/one">/root/one</router-link>
+            <router-link to="/root/one/23">/root/one/23</router-link>
         </div>
         <router-view></router-view>
     </div>
