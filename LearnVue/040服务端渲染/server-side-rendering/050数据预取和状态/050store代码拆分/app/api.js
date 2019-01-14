@@ -5,7 +5,7 @@ export function fetchItem(id) {
         id: id,
         data: `data of ${id}`,
       });
-    }, 1000);
+    });
   });
 }
 
