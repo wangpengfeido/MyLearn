@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-
-import One from './root/one/one.vue';
-
 Vue.use(Router);
 
 export function createRouter() {
@@ -13,11 +10,12 @@ export function createRouter() {
       {path: '/', redirect: '/root'},
       {
         path: '/root',
-        component: () => import('./root/root.vue'),
+        component: () => import('./pages/root/root.vue'),
         children: [
-          {path: 'one/:id', component: ()=>import('./root/one/one.vue')},
+          {path: 'one/:id', component: () => import('./pages/root/one/one.vue')},
         ]
       },
+      {path: '/second-root', component: () => import('./pages/second-root/second-root.vue')},
     ]
   });
 }

@@ -10,7 +10,7 @@
 
   // 可以将store模块分割到路由组件的chunk中
   // 那么就需要在这里导入，而不是在store/index.js中
-  import rootStoreModule from '../store/modules/root';
+  import rootStoreModule from '../../store/modules/root';
 
   export default {
     name: "root",
@@ -22,12 +22,14 @@
       return store.dispatch('fetchItem', route.params.id);
     },
     destroyed() {
-      // 注意：卸载模块，这样可以避免多次访问路由时重复注册模块
+      // 注意：卸载模块，这样可以避免多次访问路由时重复注册模块(仅对于纯客户端)
+      console.log('..............');
       this.$store.unregisterModule('root');
     },
     computed: {
       item() {
-        return this.$store.state.items[this.$route.params.id];
+        // 这里需要用命名空间取值
+        return this.$store.state.root.items[this.$route.params.id];
       }
     }
   }

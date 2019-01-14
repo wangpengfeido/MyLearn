@@ -1,4 +1,7 @@
-import Vue from "vue/types/index";
+import Vue from "vue";
+
+import {fetchItem} from "../../api";
+
 
 export default {
   namespace: true,

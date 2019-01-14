@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-
-import One from './root/one/one.vue';
-
 Vue.use(Router);
 
 export function createRouter() {
