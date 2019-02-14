@@ -7,7 +7,7 @@ Vue.component('component-one', {
 
 Vue.component('component-two', {
     template: `<div>
-                    this is compoennt two
+                    this is component two
                     <input>
                 </div>`,
 });
