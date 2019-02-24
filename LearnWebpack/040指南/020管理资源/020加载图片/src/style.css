@@ -1,0 +1,5 @@
+.hello {
+    color: red;
+    /* 在css中引用的文件同样被处理 */
+    background-image: url('./icon.png');
+}
