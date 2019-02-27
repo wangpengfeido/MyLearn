@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const Vue = require('vue');
@@ -10,7 +11,7 @@ server.listen(8123, (err) => {
 
 server.use(express.static('client-dist'));
 
-const renderer = VueServerRenderer.createBundleRenderer('/server-dist/vue-ssr-server-bundle.json',{
+const renderer = VueServerRenderer.createBundleRenderer(path.resolve(__dirname, './server-dist/vue-ssr-server-bundle.json'), {
   runInNewContext: false,
   template: fs.readFileSync('./index.template.html', 'utf-8'),
 });
