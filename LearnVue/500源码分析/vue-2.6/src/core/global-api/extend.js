@@ -5,16 +5,13 @@ import { defineComputed, proxy } from '../instance/state'
 import { extend, mergeOptions, validateComponentName } from '../util/index'
 
 export function initExtend (Vue: GlobalAPI) {
-  /**
-   * Each instance constructor, including Vue, has a unique
-   * cid. This enables us to create wrapped "child
-   * constructors" for prototypal inheritance and cache them.
-   */
+  // 每个构造器，包括Vue，有一个唯一的cid。
+  // 它让我们可以包装子构造器来实现原型继承和缓存
   Vue.cid = 0
   let cid = 1
 
   /**
-   * Class inheritance
+   * 类继承
    */
   Vue.extend = function (extendOptions: Object): Function {
     extendOptions = extendOptions || {}
@@ -30,16 +27,21 @@ export function initExtend (Vue: GlobalAPI) {
       validateComponentName(name)
     }
 
+    // 创建子类
     const Sub = function VueComponent (options) {
       this._init(options)
     }
+    // 子类继承父类，下面两句是继承的常规操作
     Sub.prototype = Object.create(Super.prototype)
     Sub.prototype.constructor = Sub
+    // cid赋值并递增
     Sub.cid = cid++
+    // 合并options
     Sub.options = mergeOptions(
       Super.options,
       extendOptions
     )
+    // 把父类赋到super属性上
     Sub['super'] = Super
 
     // For props and computed properties, we define the proxy getters on

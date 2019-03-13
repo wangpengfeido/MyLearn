@@ -12,10 +12,12 @@ import { extend, mergeOptions, formatComponentName } from '../util/index'
 
 let uid = 0
 
+// 在Vue类中定义_init实例方法
+// _init在Vue 被 new 时被调用
 export function initMixin (Vue: Class<Component>) {
   Vue.prototype._init = function (options?: Object) {
     const vm: Component = this
-    // a uid
+    // uid
     vm._uid = uid++
 
     let startTag, endTag
@@ -26,13 +28,13 @@ export function initMixin (Vue: Class<Component>) {
       mark(startTag)
     }
 
-    // a flag to avoid this being observed
+    // 一个flag，避免vue实例被observe
     vm._isVue = true
-    // merge options
+    // 合并 options
+    // TODO _isComponent
     if (options && options._isComponent) {
-      // optimize internal component instantiation
-      // since dynamic options merging is pretty slow, and none of the
-      // internal component options needs special treatment.
+      // 优化内部组件实例
+      // 因为动态option合并很慢，并且没有内部组件需要特别对待
       initInternalComponent(vm, options)
     } else {
       vm.$options = mergeOptions(
