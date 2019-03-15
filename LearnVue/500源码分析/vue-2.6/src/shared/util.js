@@ -226,7 +226,8 @@ export function toArray (list: any, start?: number): Array<any> {
 }
 
 /**
- * Mix properties into target object.
+ * 混入属性到目标对象中
+ * 它执行的是一层浅复制
  */
 export function extend (to: Object, _from: ?Object): Object {
   for (const key in _from) {
