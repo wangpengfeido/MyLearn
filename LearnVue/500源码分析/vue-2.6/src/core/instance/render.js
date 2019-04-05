@@ -16,25 +16,28 @@ import VNode, { createEmptyVNode } from '../vdom/vnode'
 
 import { isUpdatingChildComponent } from './lifecycle'
 
+/**
+ * 初始化一些渲染属性
+ */
 export function initRender (vm: Component) {
   vm._vnode = null // the root of the child tree
   vm._staticTrees = null // v-once cached trees
   const options = vm.$options
   const parentVnode = vm.$vnode = options._parentVnode // the placeholder node in parent tree
   const renderContext = parentVnode && parentVnode.context
+
+  // 初始化slot
   vm.$slots = resolveSlots(options._renderChildren, renderContext)
   vm.$scopedSlots = emptyObject
-  // bind the createElement fn to this instance
-  // so that we get proper render context inside it.
-  // args order: tag, data, children, normalizationType, alwaysNormalize
-  // internal version is used by render functions compiled from templates
+  // 绑定createElement函数到实例上，这样我们能得到它内部的完整的渲染环境。
+  // 参数顺序：tag, data, children, normalizationType,alwaysNormalize
+  // 内部版本被模板编译出的渲染函数所使用。
   vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
-  // normalization is always applied for the public version, used in
-  // user-written render functions.
+  // 标准化对于公用版本是一直适用的，在用户定义的渲染函数中。
   vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true)
 
-  // $attrs & $listeners are exposed for easier HOC creation.
-  // they need to be reactive so that HOCs using them are always updated
+  // $attrs和$listeners被暴露出来用于更简单的高阶组件的创建。
+  // 它们应该是响应式的，这样高阶组件就能使用它们来更新
   const parentData = parentVnode && parentVnode.data
 
   /* istanbul ignore else */

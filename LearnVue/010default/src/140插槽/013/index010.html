@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽-编译作用域</title>
+</head>
+<body>
+
+    <div id="app">
+        <div>
+            <!--插槽内容的作用域是组件外的父作用域，而非组件的子作用域-->
+            <component-one>
+                <div>{{value}}</div>
+            </component-one>
+            <!--父组件模板的所有东西都会在父级作用域内编译；子组件模板的所有东西都会在子级作用域内编译。-->
+        </div>
+        <br/>
+    </div>
+
+    <script src="../../../node_modules/vue/dist/vue.js"></script>
+    <script src="./index010.js"></script>
+</body>
+</html>

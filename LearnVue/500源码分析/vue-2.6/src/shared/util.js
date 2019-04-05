@@ -34,9 +34,8 @@ export function isPrimitive (value: any): boolean %checks {
 }
 
 /**
- * Quick object check - this is primarily used to tell
- * Objects from primitive values when we know the value
- * is a JSON-compliant type.
+ * 快速对象检查。
+ * 它主要用于从JSON顺从的原始值中辨别对象
  */
 export function isObject (obj: mixed): boolean %checks {
   return obj !== null && typeof obj === 'object'
@@ -52,8 +51,8 @@ export function toRawType (value: any): string {
 }
 
 /**
- * Strict object type check. Only returns true
- * for plain JavaScript objects.
+ * 严格对象类型检查。
+ * 只有是plain object时才会返回true。
  */
 export function isPlainObject (obj: any): boolean {
   return _toString.call(obj) === '[object Object]'
@@ -128,7 +127,7 @@ export const isBuiltInTag = makeMap('slot,component', true)
 export const isReservedAttribute = makeMap('key,ref,slot,slot-scope,is')
 
 /**
- * Remove an item from an array.
+ * 从数组中移除元素
  */
 export function remove (arr: Array<any>, item: any): Array<any> | void {
   if (arr.length) {
@@ -140,7 +139,7 @@ export function remove (arr: Array<any>, item: any): Array<any> | void {
 }
 
 /**
- * Check whether an object has the property.
+ * 检查对象中是否包含一个属性
  */
 const hasOwnProperty = Object.prototype.hasOwnProperty
 export function hasOwn (obj: Object | Array<*>, key: string): boolean {

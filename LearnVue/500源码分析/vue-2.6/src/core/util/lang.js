@@ -8,7 +8,8 @@
 export const unicodeLetters = 'a-zA-Z\u00B7\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u037D\u037F-\u1FFF\u200C-\u200D\u203F-\u2040\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD'
 
 /**
- * Check if a string starts with $ or _
+ * 检查一个字符串是否以 $ 或 _ 开始
+ * 它可以用来检查某个属性是否是Vue的保留字
  */
 export function isReserved (str: string): boolean {
   const c = (str + '').charCodeAt(0)
@@ -16,7 +17,7 @@ export function isReserved (str: string): boolean {
 }
 
 /**
- * Define a property.
+ * 定义一个属性
  */
 export function def (obj: Object, key: string, val: any, enumerable?: boolean) {
   Object.defineProperty(obj, key, {
@@ -28,10 +29,12 @@ export function def (obj: Object, key: string, val: any, enumerable?: boolean) {
 }
 
 /**
- * Parse simple path.
+ * 解析简单（类调用）路径
+ * @return 除不符合规范情况外，返回一个函数，以某对象为参数调用此函数，返回路径下的值
  */
 const bailRE = new RegExp(`[^${unicodeLetters}.$_\\d]`)
 export function parsePath (path: string): any {
+  // 如果不符合类调用路径则返回undefined
   if (bailRE.test(path)) {
     return
   }

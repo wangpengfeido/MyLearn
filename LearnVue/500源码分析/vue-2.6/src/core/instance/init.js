@@ -37,6 +37,7 @@ export function initMixin (Vue: Class<Component>) {
       // 因为动态option合并很慢，并且没有内部组件需要特别对待
       initInternalComponent(vm, options)
     } else {
+      // 这里是动态option合并
       vm.$options = mergeOptions(
         resolveConstructorOptions(vm.constructor),
         options || {},
@@ -73,9 +74,13 @@ export function initMixin (Vue: Class<Component>) {
   }
 }
 
+/**
+ * 初始化内部组件
+ * 直接使用父Vue类的选项
+ */
 export function initInternalComponent (vm: Component, options: InternalComponentOptions) {
   const opts = vm.$options = Object.create(vm.constructor.options)
-  // doing this because it's faster than dynamic enumeration.
+  // 这样做的原因是它比动态枚举快
   const parentVnode = options._parentVnode
   opts.parent = options.parent
   opts._parentVnode = parentVnode
@@ -97,6 +102,7 @@ export function initInternalComponent (vm: Component, options: InternalComponent
  * 如果是Vue类，直接返回Vue类的options
  * 如果是Vue扩展类，则检查父类是否有变化
  *     如果有变化，则处理本身的options并将其返回
+ *     如果没有变化，则返回原来的options
  * @return {*} 解析出的options
  */
 export function resolveConstructorOptions (Ctor: Class<Component>) {

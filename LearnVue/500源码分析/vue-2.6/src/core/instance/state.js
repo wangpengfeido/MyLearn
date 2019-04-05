@@ -35,6 +35,10 @@ const sharedPropertyDefinition = {
   set: noop
 }
 
+
+/**
+ * 在target上设置属性key，为target[sourceKey][key]的代理
+ */
 export function proxy (target: Object, sourceKey: string, key: string) {
   sharedPropertyDefinition.get = function proxyGetter () {
     return this[sourceKey][key]
@@ -45,6 +49,10 @@ export function proxy (target: Object, sourceKey: string, key: string) {
   Object.defineProperty(target, key, sharedPropertyDefinition)
 }
 
+/**
+ * 初始化state
+ * 处理了props/methods/data/computed/watch
+ */
 export function initState (vm: Component) {
   vm._watchers = []
   const opts = vm.$options
@@ -61,6 +69,9 @@ export function initState (vm: Component) {
   }
 }
 
+/**
+ * 初始化vm的props
+ */
 function initProps (vm: Component, propsOptions: Object) {
   const propsData = vm.$options.propsData || {}
   const props = vm._props = {}
@@ -109,11 +120,17 @@ function initProps (vm: Component, propsOptions: Object) {
   toggleObserving(true)
 }
 
+/**
+ * 初始化vm的data
+ * 它会处理data，在实例上设置data代理，并把data转换为observer
+ */
 function initData (vm: Component) {
   let data = vm.$options.data
+  // 处理data
   data = vm._data = typeof data === 'function'
     ? getData(data, vm)
     : data || {}
+  //  检查非法
   if (!isPlainObject(data)) {
     data = {}
     process.env.NODE_ENV !== 'production' && warn(
@@ -130,6 +147,7 @@ function initData (vm: Component) {
   while (i--) {
     const key = keys[i]
     if (process.env.NODE_ENV !== 'production') {
+      // 判断methods与data重名
       if (methods && hasOwn(methods, key)) {
         warn(
           `Method "${key}" has already been defined as a data property.`,
@@ -137,17 +155,19 @@ function initData (vm: Component) {
         )
       }
     }
+    // 判断props与data重名
     if (props && hasOwn(props, key)) {
       process.env.NODE_ENV !== 'production' && warn(
         `The data property "${key}" is already declared as a prop. ` +
         `Use prop default value instead.`,
         vm
       )
-    } else if (!isReserved(key)) {
+    } else if (!isReserved(key)) {    // 检查保留字
+      // 在实例上设置data的代理
       proxy(vm, `_data`, key)
     }
   }
-  // observe data
+  // 将data转换为observeer
   observe(data, true /* asRootData */)
 }
 

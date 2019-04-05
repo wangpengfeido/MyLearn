@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
     perf.clearMarks &&
     perf.clearMeasures
   ) {
+    // 一个快捷调用window.performance.mark的方法
     mark = tag => perf.mark(tag)
     measure = (name, startTag, endTag) => {
       perf.measure(name, startTag, endTag)

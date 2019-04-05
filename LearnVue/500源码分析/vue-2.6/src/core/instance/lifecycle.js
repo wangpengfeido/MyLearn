@@ -29,10 +29,14 @@ export function setActiveInstance(vm: Component) {
   }
 }
 
+/**
+ * 初始化了内部生命周期相关属性
+ * 挂载了$parent和$root
+ */
 export function initLifecycle (vm: Component) {
   const options = vm.$options
 
-  // locate first non-abstract parent
+  // 定位第一个非abstract的父实例
   let parent = options.parent
   if (parent && !options.abstract) {
     while (parent.$options.abstract && parent.$parent) {
@@ -41,12 +45,15 @@ export function initLifecycle (vm: Component) {
     parent.$children.push(vm)
   }
 
+  // 挂载$parent和$root
   vm.$parent = parent
   vm.$root = parent ? parent.$root : vm
 
+  // 初始化 $children 和 $refs
   vm.$children = []
   vm.$refs = {}
 
+  // 初始化内部生命周期相关属性
   vm._watcher = null
   vm._inactive = null
   vm._directInactive = false
@@ -319,9 +326,14 @@ export function deactivateChildComponent (vm: Component, direct?: boolean) {
   }
 }
 
+/**
+ * 调用生命周期钩子
+ * @param hook 钩子名称
+ */
 export function callHook (vm: Component, hook: string) {
-  // #7573 disable dep collection when invoking lifecycle hooks
+  // #7573 当调用生命周期钩子时暂停依赖收集
   pushTarget()
+  // 调用生命周期钩子
   const handlers = vm.$options[hook]
   const info = `${hook} hook`
   if (handlers) {
@@ -329,6 +341,7 @@ export function callHook (vm: Component, hook: string) {
       invokeWithErrorHandling(handlers[i], vm, null, vm, info)
     }
   }
+  // 触发钩子事件
   if (vm._hasHookEvent) {
     vm.$emit('hook:' + hook)
   }
