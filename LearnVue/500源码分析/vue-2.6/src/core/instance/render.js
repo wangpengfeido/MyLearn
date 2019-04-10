@@ -79,6 +79,8 @@ export function renderMixin (Vue: Class<Component>) {
     // render self
     let vnode
     try {
+      // 调用了render函数
+      // _renderProxy 是为了错误提示。$createElement是传入render函数中的参数，它是用于创建VNode的函数。
       vnode = render.call(vm._renderProxy, vm.$createElement)
     } catch (e) {
       handleError(e, vm, `render`)

@@ -37,8 +37,8 @@ export default class Watcher {
   newDeps: Array<Dep>;     // 收集依赖的中转。在watcher触发getter后的收集依赖中，订阅被存放在new deps中，完成后再转移到deps中
   depIds: SimpleSet;
   newDepIds: SimpleSet;
-  before: ?Function;
-  getter: Function;         // getter-获取表达式值的方法
+  before: ?Function;       // options中的一个函数，在watcher被触发update时首先调用
+  getter: Function;        // getter-获取表达式值的方法
   value: any;              // 计算出的表达式的值
 
   constructor (
@@ -46,9 +46,10 @@ export default class Watcher {
     expOrFn: string | Function,     // 表达式
     cb: Function,                   // 回调函数。触发更新时执行
     options?: ?Object,
-    isRenderWatcher?: boolean
+    isRenderWatcher?: boolean       // 是否是渲染用watcher。即watcher对应的vm是否被渲染。如果它为true，将会把该watcher赋给vm._watcher
   ) {
     this.vm = vm
+    // 如果是渲染用watcher，把该watcher赋给vm._watcher
     if (isRenderWatcher) {
       vm._watcher = this
     }
@@ -91,7 +92,7 @@ export default class Watcher {
         )
       }
     }
-    // 获取到表达式的值
+    // 获取到表达式的值，它会触发一次依赖收集
     this.value = this.lazy
       ? undefined
       : this.get()
@@ -183,7 +184,7 @@ export default class Watcher {
   /**
    * 调度工作接口。
    * 被调度器调用。
-   * 它会调用回调函数
+   * 它会重新计算value值，并调用回调函数
    */
   run () {
     if (this.active) {

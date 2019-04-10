@@ -12,6 +12,7 @@ import {
 
 export const MAX_UPDATE_COUNT = 100
 
+// watcher队列
 const queue: Array<Watcher> = []
 const activatedChildren: Array<Component> = []
 let has: { [key: number]: ?true } = {}
@@ -126,6 +127,10 @@ function callActivatedHooks (queue) {
  * Push a watcher into the watcher queue.
  * Jobs with duplicate IDs will be skipped unless it's
  * pushed when the queue is being flushed.
+ */
+/**
+ * push watcher到watcher队列中。
+ * 带有复制的ids的jobs将被跳过，除非当队列被flushed时它被push到队列中
  */
 export function queueWatcher (watcher: Watcher) {
   const id = watcher.id
