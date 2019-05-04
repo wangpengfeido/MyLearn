@@ -1,7 +1,3 @@
-/**
- * Created by w1036_000 on 2017/8/15.
- */
-
 let express = require('express');
 let app = express();
 

@@ -440,9 +440,8 @@ export function mergeOptions (
 }
 
 /**
- * Resolve an asset.
- * This function is used because child instances need access
- * to assets defined in its ancestor chain.
+ * 解析一个资源
+ * 这个函数被使用是因为，子实例需要有权使用定义在祖先链上的资源
  */
 export function resolveAsset (
   options: Object,
@@ -455,13 +454,15 @@ export function resolveAsset (
     return
   }
   const assets = options[type]
-  // check local registration variations first
+  // 首先检查自身定义的变量
   if (hasOwn(assets, id)) return assets[id]
+  // 检查自身的驼峰命名
   const camelizedId = camelize(id)
   if (hasOwn(assets, camelizedId)) return assets[camelizedId]
+  // 检查自身的大驼峰命名
   const PascalCaseId = capitalize(camelizedId)
   if (hasOwn(assets, PascalCaseId)) return assets[PascalCaseId]
-  // fallback to prototype chain
+  // 检查原型链上的定义
   const res = assets[id] || assets[camelizedId] || assets[PascalCaseId]
   if (process.env.NODE_ENV !== 'production' && warnMissing && !res) {
     warn(

@@ -552,7 +552,7 @@ function initData (vm: Component) {
 ## 010110
 下面来看一下mountComponent函数。
 
-它的作用是将vue实例挂载到dom。
+它的作用是将vue实例挂载到dom。它在$mount中被调用，见#150210。
 
 打开````src/core/instance/lifecycle.js````
 ````

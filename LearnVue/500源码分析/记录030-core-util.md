@@ -296,6 +296,166 @@ export function isObject (obj: mixed): boolean %checks {
 }
 ````
 
+## 035070
+makeMap。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 生成一个map，并返回一个函数来检查一个key是否在map中
+ * @param str 以逗号分隔的字符串
+ * @param expectsLowerCase 是否转换为小写
+ */
+export function makeMap (
+  str: string,
+  expectsLowerCase?: boolean
+): (key: string) => true | void {
+  const map = Object.create(null)
+  const list: Array<string> = str.split(',')
+  for (let i = 0; i < list.length; i++) {
+    map[list[i]] = true
+  }
+  return expectsLowerCase
+    ? val => map[val.toLowerCase()]
+    : val => map[val]
+}
+````
+
+## 035080
+no。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 一个永远返回false的函数
+ */
+export const no = (a?: any, b?: any, c?: any) => false
+````
+
+## 035090
+isBuiltInTag。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 检查一个标签是否是内置标签
+ * 对于内置标签，它一定不是静态的
+ */
+export const isBuiltInTag = makeMap('slot,component', true)
+````
+
+## 035100
+cached。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 创建一个纯函数的缓存版本（仅适用于只有一个字符串参数的函数）
+ * 返回的函数缓存版本，它会缓存每次调用的结果，当对这个函数传入相同参数时，直接返回曾经计算出的结果，而不会重新计算
+ */
+export function cached<F: Function> (fn: F): F {
+  const cache = Object.create(null)
+  return (function cachedFn (str: string) {
+    const hit = cache[str]
+    return hit || (cache[str] = fn(str))
+  }: any)
+}
+````
+
+## 035110
+isDef。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 判断某个变量是否非undefined并且非null
+ */
+export function isDef (v: any): boolean %checks {
+  return v !== undefined && v !== null
+}
+````
+
+## 035120
+isPrimitive。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 检查一个值是否是原生类型
+ */
+export function isPrimitive (value: any): boolean %checks {
+  return (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    // $flow-disable-line
+    typeof value === 'symbol' ||
+    typeof value === 'boolean'
+  )
+}
+````
+
+## 035130
+noop。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 不执行任何操作
+ * Stubbing args to make Flow happy without leaving useless transpiled code
+ * with ...rest (https://flow.org/blog/2017/05/07/Strict-Function-Call-Arity/).
+ */
+export function noop (a?: any, b?: any, c?: any) {}
+````
+
+## 035140
+noop。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 返回相同的值
+ */
+export const identity = (_: any) => _
+````
+
+## 035150
+camelize。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 将一个连字符分隔的字符串转换为驼峰字符串
+ */
+const camelizeRE = /-(\w)/g
+export const camelize = cached((str: string): string => {
+  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '')
+})
+````
+
+## 035160
+capitalize。
+
+打开````src/shared/util.js````。
+````
+/**
+ * 大写字符串的第一个字母
+ */
+export const capitalize = cached((str: string): string => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+})
+````
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

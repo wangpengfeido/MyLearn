@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>component</title>
+</head>
+<body>
+
+<div id="app">
+  <div>
+    {{n}}
+    <button @click="addN()">addN</button>
+  </div>
+  <br/><br/><br/>
+  <div>
+    <!-- 它将不参与编译 -->
+    <div v-pre>{{n}}</div>
+  </div>
+  <br/><br/><br/>
+  <div>
+    <!-- 组件同样也不会被渲染 -->
+    <div v-pre>
+      <component-one></component-one>
+    </div>
+  </div>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="./010index.js"></script>
+</body>
+</html>

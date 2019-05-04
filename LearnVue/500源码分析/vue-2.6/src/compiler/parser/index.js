@@ -64,7 +64,7 @@ export function createASTElement (
 }
 
 /**
- * Convert HTML string to AST.
+ * 转换 HTML 字符串到 AST
  */
 export function parse (
   template: string,
@@ -174,6 +174,8 @@ export function parse (
     shouldDecodeNewlinesForHref: options.shouldDecodeNewlinesForHref,
     shouldKeepComment: options.comments,
     outputSourceRange: options.outputSourceRange,
+
+    // 每个开始标签解析完成后调用
     start (tag, attrs, unary, start) {
       // check namespace.
       // inherit parent ns if there is one
@@ -185,6 +187,7 @@ export function parse (
         attrs = guardIESVGBug(attrs)
       }
 
+      // 创建ASTElement
       let element: ASTElement = createASTElement(tag, attrs, currentParent)
       if (ns) {
         element.ns = ns

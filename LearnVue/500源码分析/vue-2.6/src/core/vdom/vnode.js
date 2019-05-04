@@ -17,7 +17,7 @@ export default class VNode {
   raw: boolean; // contains raw HTML? (server only)
   isStatic: boolean; // hoisted static node
   isRootInsert: boolean; // necessary for enter transition check
-  isComment: boolean; // empty comment placeholder?
+  isComment: boolean; // 是否是空注释占位符
   isCloned: boolean; // is a cloned node?
   isOnce: boolean; // is a v-once node?
   asyncFactory: Function | void; // async component factory function
@@ -71,6 +71,9 @@ export default class VNode {
   }
 }
 
+/**
+ * 创建 empty VNode
+ */
 export const createEmptyVNode = (text: string = '') => {
   const node = new VNode()
   node.text = text
@@ -78,6 +81,9 @@ export const createEmptyVNode = (text: string = '') => {
   return node
 }
 
+/**
+ * 创建 text VNode
+ */
 export function createTextVNode (val: string | number) {
   return new VNode(undefined, undefined, undefined, String(val))
 }

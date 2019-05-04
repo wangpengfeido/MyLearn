@@ -8,6 +8,9 @@ export function isUndef (v: any): boolean %checks {
   return v === undefined || v === null
 }
 
+/**
+ * 判断某个变量是否非undefined并且非null
+ */
 export function isDef (v: any): boolean %checks {
   return v !== undefined && v !== null
 }
@@ -21,7 +24,7 @@ export function isFalse (v: any): boolean %checks {
 }
 
 /**
- * Check if value is primitive.
+ * 检查一个值是否是原生类型
  */
 export function isPrimitive (value: any): boolean %checks {
   return (
@@ -99,8 +102,9 @@ export function toNumber (val: string): number | string {
 }
 
 /**
- * Make a map and return a function for checking if a key
- * is in that map.
+ * 生成一个map，并返回一个函数来检查一个key是否在map中
+ * @param str 以逗号分隔的字符串
+ * @param expectsLowerCase 是否转换为小写
  */
 export function makeMap (
   str: string,
@@ -117,7 +121,8 @@ export function makeMap (
 }
 
 /**
- * Check if a tag is a built-in tag.
+ * 检查一个标签是否是内置标签
+ * 对于内置标签，它一定不是静态的
  */
 export const isBuiltInTag = makeMap('slot,component', true)
 
@@ -147,7 +152,8 @@ export function hasOwn (obj: Object | Array<*>, key: string): boolean {
 }
 
 /**
- * Create a cached version of a pure function.
+ * 创建一个纯函数的缓存版本（仅适用于只有一个字符串参数的函数）
+ * 返回的函数缓存版本，它会缓存每次调用的结果，当对这个函数传入相同参数时，直接返回曾经计算出的结果，而不会重新计算
  */
 export function cached<F: Function> (fn: F): F {
   const cache = Object.create(null)
@@ -158,7 +164,7 @@ export function cached<F: Function> (fn: F): F {
 }
 
 /**
- * Camelize a hyphen-delimited string.
+ * 将一个连字符分隔的字符串转换为驼峰字符串
  */
 const camelizeRE = /-(\w)/g
 export const camelize = cached((str: string): string => {
@@ -166,7 +172,7 @@ export const camelize = cached((str: string): string => {
 })
 
 /**
- * Capitalize a string.
+ * 大写字符串的第一个字母
  */
 export const capitalize = cached((str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1)
@@ -251,21 +257,21 @@ export function toObject (arr: Array<any>): Object {
 /* eslint-disable no-unused-vars */
 
 /**
- * Perform no operation.
+ * 不执行任何操作
  * Stubbing args to make Flow happy without leaving useless transpiled code
  * with ...rest (https://flow.org/blog/2017/05/07/Strict-Function-Call-Arity/).
  */
 export function noop (a?: any, b?: any, c?: any) {}
 
 /**
- * Always return false.
+ * 一个永远返回false的函数
  */
 export const no = (a?: any, b?: any, c?: any) => false
 
 /* eslint-enable no-unused-vars */
 
 /**
- * Return the same value.
+ * 返回相同的值
  */
 export const identity = (_: any) => _
 

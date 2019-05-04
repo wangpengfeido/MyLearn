@@ -83,7 +83,7 @@ declare type ComponentOptions = {
 
 
 
-## 800020
+## 800110
 flow类型定义——Component。
 
 在````/flow/component.js````
@@ -175,7 +175,7 @@ declare interface Component {
   _mount: (el?: Element | void, hydrating?: boolean) => Component;
   _update: (vnode: VNode, hydrating?: boolean) => void;
 
-  // 渲染函数。可以生成vm的VNode
+  // 渲染函数。可以生成vm的VNode。它内部调用了options中的render。
   _render: () => VNode;
 
   __patch__: (
@@ -189,7 +189,8 @@ declare interface Component {
 
   // createElement
 
-  // _c is internal that accepts `normalizationType` optimization hint
+  // _c 是内部的，接收`normalizationType`优化提示
+  // 实际上就是createElement方法，多了一个normalizationType参数。（/core/vdom/create-element.js）
   _c: (
     vnode?: VNode,
     data?: VNodeData,
@@ -197,13 +198,13 @@ declare interface Component {
     normalizationType?: number
   ) => VNode | void;
 
-  // renderStatic
+  // renderStatic 方法（/core/instance/render-helpers/render-static.js）
   _m: (index: number, isInFor?: boolean) => VNode | VNodeChildren;
   // markOnce
   _o: (vnode: VNode | Array<VNode>, index: number, key: string) => VNode | VNodeChildren;
-  // toString
+  // toString 方法（/shared/util.js）
   _s: (value: mixed) => string;
-  // text to VNode
+  // createTextVnode 方法（/core/vdom/vnode.js）
   _v: (value: string | number) => VNode;
   // toNumber
   _n: (value: string) => number | string;
@@ -243,10 +244,235 @@ declare interface Component {
 };
 ````
 
+## 800210
+AST。
 
+模板转换成的AST语法树。
 
+打开````/flow/compiler.js````
+````
+declare type ASTNode = ASTElement | ASTText | ASTExpression
+````
 
+## 800210-1
+ASTElement
+````
+declare type ASTElement = {
+  type: 1;
+  tag: string;
+  attrsList: Array<ASTAttr>;
+  attrsMap: { [key: string]: any };
+  rawAttrsMap: { [key: string]: ASTAttr };
+  parent: ASTElement | void;
+  children: Array<ASTNode>;
 
+  start?: number;
+  end?: number;
+
+  processed?: true;
+
+  // 此 AST 是否是静态节点
+  static?: boolean;
+  // 是否是静态根节点（真正编译时使用）
+  staticRoot?: boolean;
+  // 是否是v-for内的静态节点
+  staticInFor?: boolean;
+  // 该静态AST是否已被处理（编译）。它是一个标志，保证静态节点只被处理一次。
+  staticProcessed?: boolean;
+  // 是否有动态绑定
+  hasBindings?: boolean;
+
+  text?: string;
+  attrs?: Array<ASTAttr>;
+  props?: Array<ASTAttr>;
+  plain?: boolean;
+  // 是否有v-pre指令
+  pre?: true;
+  ns?: string;
+
+  // 如果标签是一个组件，它的组件名
+  component?: string;
+  inlineTemplate?: true;
+  transitionMode?: string | null;
+  slotName?: ?string;
+  slotTarget?: ?string;
+  slotScope?: ?string;
+  scopedSlots?: { [name: string]: ASTElement };
+
+  ref?: string;
+  refInFor?: boolean;
+
+  // 是否有 v-if 指令
+  if?: string;
+  ifProcessed?: boolean;
+  elseif?: string;
+  else?: true;
+  ifConditions?: ASTIfConditions;
+
+  // 是否有 v-for 指令
+  for?: string;
+  forProcessed?: boolean;
+  key?: string;
+  alias?: string;
+  iterator1?: string;
+  iterator2?: string;
+
+  staticClass?: string;
+  classBinding?: string;
+  staticStyle?: string;
+  styleBinding?: string;
+  events?: ASTElementHandlers;
+  nativeEvents?: ASTElementHandlers;
+
+  transition?: string | true;
+  transitionOnAppear?: boolean;
+
+  model?: {
+    value: string;
+    callback: string;
+    expression: string;
+  };
+
+  directives?: Array<ASTDirective>;
+
+  forbidden?: true;
+  once?: true;
+  onceProcessed?: boolean;
+  wrapData?: (code: string) => string;
+  wrapListeners?: (code: string) => string;
+
+  // 2.4 ssr optimization
+  ssrOptimizability?: number;
+
+  // weex specific
+  appendAsTree?: boolean;
+
+  // 2.6 $slot check
+  has$Slot?: boolean
+};
+````
+
+## 800210-2
+ASTExpression
+````
+declare type ASTExpression = {
+  type: 2;
+  expression: string;
+  text: string;
+  tokens: Array<string | Object>;
+  static?: boolean;
+  // 2.4 ssr optimization
+  ssrOptimizability?: number;
+  start?: number;
+  end?: number;
+  // 2.6 $slot check
+  has$Slot?: boolean
+};
+````
+
+## 800210-3
+ASTText
+````
+declare type ASTText = {
+  type: 3;
+  text: string;
+  static?: boolean;
+  isComment?: boolean;
+  // 2.4 ssr optimization
+  ssrOptimizability?: number;
+  start?: number;
+  end?: number;
+  // 2.6 $slot check
+  has$Slot?: boolean
+};
+````
+
+## 800310
+VNode。
+
+````
+declare type VNodeChildren = Array<?VNode | string | VNodeChildren> | string;
+
+declare type VNodeComponentOptions = {
+  Ctor: Class<Component>;
+  propsData: ?Object;
+  listeners: ?Object;
+  children: ?Array<VNode>;
+  tag?: string;
+};
+
+declare type MountedComponentVNode = {
+  context: Component;
+  componentOptions: VNodeComponentOptions;
+  componentInstance: Component;
+  parent: VNode;
+  data: VNodeData;
+};
+
+// interface for vnodes in update modules
+declare type VNodeWithData = {
+  tag: string;
+  data: VNodeData;
+  children: ?Array<VNode>;
+  text: void;
+  elm: any;
+  ns: string | void;
+  context: Component;
+  key: string | number | void;
+  parent?: VNodeWithData;
+  componentOptions?: VNodeComponentOptions;
+  componentInstance?: Component;
+  isRootInsert: boolean;
+};
+
+declare interface VNodeData {
+  // VNode的键
+  key?: string | number;
+  slot?: string;
+  ref?: string;
+  // 使用 ":is" 绑定的组件
+  is?: string;
+  pre?: boolean;
+  tag?: string;
+  staticClass?: string;
+  class?: any;
+  staticStyle?: { [key: string]: any };
+  style?: Array<Object> | Object;
+  normalizedStyle?: Object;
+  props?: { [key: string]: any };
+  attrs?: { [key: string]: string };
+  domProps?: { [key: string]: any };
+  hook?: { [key: string]: Function };
+  on?: ?{ [key: string]: Function | Array<Function> };
+  nativeOn?: { [key: string]: Function | Array<Function> };
+  transition?: Object;
+  show?: boolean; // marker for v-show
+  inlineTemplate?: {
+    render: Function;
+    staticRenderFns: Array<Function>;
+  };
+  directives?: Array<VNodeDirective>;
+  keepAlive?: boolean;
+  scopedSlots?: { [key: string]: Function };
+  model?: {
+    value: any;
+    callback: Function;
+  };
+};
+
+declare type VNodeDirective = {
+  name: string;
+  rawName: string;
+  value?: any;
+  oldValue?: any;
+  arg?: string;
+  modifiers?: ASTModifiers;
+  def?: Object;
+};
+
+declare type ScopedSlotsData = Array<{ key: string, fn: Function } | ScopedSlotsData>;
+
+````
 
 
 

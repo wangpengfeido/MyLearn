@@ -1,4 +1,4 @@
-## 编译器/运行时
+## 150110 编译器/运行时
 Vue包含编译器和运行时。
 * 完整版：同时包含编译器和运行时的版本。
 * 编译器：用来将模板字符串编译成为 JavaScript 渲染函数的代码。
@@ -9,10 +9,12 @@ Vue包含编译器和运行时。
 下面是Vue完整版的渲染过程。
 ![](./_images/Vue$mount.png)
 
-## $mount
+## 150210 $mount
 $mount的实现。
 
-先来看运行时版本。它执行了生命周期中的 mountComponent挂载实例。详情见 #010110
+先来看运行时版本。它执行了生命周期中的 mountComponent挂载实例。详情见 #010110。
+
+打开````src/platforms/web/runtime/index.js````。
 ````
 // 公共的 $mount 方法
 Vue.prototype.$mount = function (
@@ -26,6 +28,8 @@ Vue.prototype.$mount = function (
 ````
 
 然后是编译器+运行时的完整版本。它解析 template/el 并转换成 render 函数，然后调用的运行时的$mount。
+
+打开````src/platforms/web/runtime/entry-runtime-with-compiler.js````
 ````
 const mount = Vue.prototype.$mount
 Vue.prototype.$mount = function (
