@@ -15,6 +15,8 @@ export class AyaBaaWithSearch extends Component {
   render() {
     return (
       <div>
+        <input className='aaaa'/>
+        <button></button>
         <Select
           showSearch
           style={{width: 200}}
@@ -25,6 +27,7 @@ export class AyaBaaWithSearch extends Component {
           // onBlur={onBlur}
           // onSearch={onSearch}
           // filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+          open
         >
           <Option value="jack">Jack1</Option>
           <Option value="lucy">Lucy</Option>
