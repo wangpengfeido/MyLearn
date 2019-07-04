@@ -7,7 +7,7 @@ const config = {
     main: './src/01.js',
   },
   output: {
-    filename: '[name].[chunkhash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, './dist'),
   },
   mode: 'development',
@@ -26,11 +26,11 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
-    new webpack.HashedModuleIdsPlugin(),
   ],
 };
 
 webpack(config).run();
+

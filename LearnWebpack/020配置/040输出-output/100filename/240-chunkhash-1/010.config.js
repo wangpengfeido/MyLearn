@@ -26,11 +26,12 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
+      filename: '[name].[chunkhash].css',
+      chunkFilename:'[id].[chunkhash].css',
     }),
-    new webpack.HashedModuleIdsPlugin(),
   ],
 };
 
 webpack(config).run();
+
+// 分离出的css与因用它的js在同一个chunk中，拥有相同的chunkhash
