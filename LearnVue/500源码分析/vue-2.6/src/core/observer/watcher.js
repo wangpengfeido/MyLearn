@@ -29,12 +29,15 @@ export default class Watcher {
   id: number;
   deep: boolean;
   user: boolean;
-  lazy: boolean;            // 选项。关于lazy选项，它是用于computed。
+  // 选项。关于lazy选项，它是用于computed。
+  // 如果它为true，那么数据更新时不会立刻计算值（创建watcher时也不会计算），而是调用evaluate方法时才计算
+  // 这样就实现了：只有在获取computed属性的值时才计算一次
+  lazy: boolean;
   sync: boolean;
-  dirty: boolean;
+  dirty: boolean;    // 配合lazy使用。是否数据变化了，但是并未求值
   active: boolean;
   deps: Array<Dep>;         // watcher订阅的deps
-  newDeps: Array<Dep>;     // 收集依赖的中转。在watcher触发getter后的收集依赖中，订阅被存放在new deps中，完成后再转移到deps中
+  newDeps: Array<Dep>;     // 收集依赖的中转。在watcher触发getter后的收集依赖中，订阅被存放在newDeps中，完成后再转移到deps中
   depIds: SimpleSet;
   newDepIds: SimpleSet;
   before: ?Function;       // options中的一个函数，在watcher被触发update时首先调用

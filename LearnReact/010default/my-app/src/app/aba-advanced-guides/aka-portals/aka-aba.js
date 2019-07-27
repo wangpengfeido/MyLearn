@@ -8,6 +8,8 @@ import {isElement} from 'lodash';
  * 由于 portal 仍存在于 React 树中，而不用考虑其在 DOM 树中的位置。
  */
 
+/* 事件冒泡按照react的组件树结构进行，而不按照渲染的html dom树进行 */
+
 class Modal extends Component {
     constructor(props) {
         super(props);
@@ -110,7 +112,6 @@ export class AkaAba extends Component {
 /**
  * 在父组件里捕获一个来自 portal 的事件冒泡能够在开发时具有不完全依赖于 portal 的更为灵活的抽象。
  * 例如，若你在渲染一个 <Modal /> 组件，父组件能够捕获其事件而无论其是否采用 portal 实现。
- * 我的理解：在使用一个组件时，不用管它内部是否使用了protal，都可以正常捕获其事件
  */
 
 

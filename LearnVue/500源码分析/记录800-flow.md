@@ -148,6 +148,7 @@ declare interface Component {
   _watcher: Watcher;
   // Vue实例上的watchers
   _watchers: Array<Watcher>;
+  // 为计算属性创建的watchers
   _computedWatchers: { [key: string]: Watcher };
   // 处理后的data（函数处理为对象）
   _data: Object;

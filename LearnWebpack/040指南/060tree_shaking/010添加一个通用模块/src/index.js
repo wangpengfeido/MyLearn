@@ -1,7 +1,7 @@
 import {cube} from "./math";
 
 // 并未引用square方法
-// 但从打包好的bundle中可以看出，square仍然被打包在其中
+// 但从打包好的bundle中可以看出，square仍然被打包在其中，如果不启用tree shaking
 
 function component() {
   var element = document.createElement('pre');
