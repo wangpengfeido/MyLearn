@@ -57,6 +57,8 @@ export class App extends Component {
               <div><Link to="/baa-test">试验</Link></div>
               <ul>
                 <li><Link to='/baa-test/aaa-ref-children'>直接获取children</Link></li>
+                <li><Link to='/baa-test/aba-should-component-update'>shouldComponentUpdate的参数</Link></li>
+                <li><Link to='/baa-test/aca-use-state'>use state 更新</Link></li>
               </ul>
             </li>
           </ul>
