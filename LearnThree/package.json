@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "three": "^0.84.0"
+    "@tweenjs/tween.js": "^17.4.0",
+    "stats.js": "^0.17.0",
+    "three": "^0.107.0"
   }
 }
