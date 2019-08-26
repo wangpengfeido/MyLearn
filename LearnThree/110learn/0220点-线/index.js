@@ -1,3 +1,10 @@
+// Three.js使用右手坐标系。就像下面这样
+//           Y
+//           ↑
+//           ·→X
+//         ↙
+//        Z
+
 class App {
   constructor() {
     this.width = 0;
@@ -44,18 +51,29 @@ class App {
     this.scene.add(this.light);
   }
   initObject() {
+    // 绘制了一个线构成的网格
+
     const geometry = new THREE.Geometry();
+    // 点在vertices中存放
+    geometry.vertices.push(new THREE.Vector3(-500, 0, 0), new THREE.Vector3(500, 0, 0));
+    for (let i = 0; i <= 20; i++) {
+      const line1 = new THREE.Line(
+        geometry,
+        new THREE.LineBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2 })
+      );
+      line1.position.z = 500 - i * 50;
+      this.scene.add(line1);
 
-    const color1 = new THREE.Color(0x444444),
-      color2 = new THREE.Color(0xff0000);
-    const p1 = new THREE.Vector3(-100, 0, 100);
-    const p2 = new THREE.Vector3(100, 0, -100);
-    geometry.vertices.push(p1, p2);
-    geometry.colors.push(color1, color2);
-
-    const material = new THREE.LineBasicMaterial({ vertexColors: THREE.VertexColors });
-    const line = new THREE.LineSegments(geometry, material);
-    this.scene.add(line);
+      const line2 = new THREE.Line(
+        geometry,
+        new THREE.LineBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2 })
+      );
+      // position表示位移
+      line2.position.x = 500 - i * 50;
+      // rotation表示旋转（弧度）。这里旋转0.5π弧度
+      line2.rotation.y = 0.5 * Math.PI;
+      this.scene.add(line2);
+    }
   }
   render() {
     this.renderer.clear();

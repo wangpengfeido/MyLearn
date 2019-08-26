@@ -1,3 +1,5 @@
+// mesh模型：三个不在一条直线上的点就能够组成一个三角形面，无数三角形面就能够组成各种形状的物体
+
 class App {
   constructor() {
     this.width = 0;
@@ -44,17 +46,26 @@ class App {
     this.scene.add(this.light);
   }
   initObject() {
+    // 使用THREE.Geometry声明一个几何体
+    // Geometry类中的vertices属性可以存放顶点信息；colors属性是顶点colors队列，与vertices对应
     const geometry = new THREE.Geometry();
-
-    const color1 = new THREE.Color(0x444444),
-      color2 = new THREE.Color(0xff0000);
+    // 使用THREE.Color定义颜色
+    const color1 = new THREE.Color(0x444444);
+    const color2 = new THREE.Color(0xff0000);
+    // 使用THREE.Vector3定义顶点
     const p1 = new THREE.Vector3(-100, 0, 100);
     const p2 = new THREE.Vector3(100, 0, -100);
+    // 设置几何体的顶点和颜色。顶点颜色只有在使用顶点着色时才有用
     geometry.vertices.push(p1, p2);
     geometry.colors.push(color1, color2);
 
+    // THREE.LineBasicMaterial创建基础线条材质
+    // vertexColors: THREE.VertexColors表示使用顶点着色
     const material = new THREE.LineBasicMaterial({ vertexColors: THREE.VertexColors });
+
+    // 使用LineSegments创建直线，它是使用每两个顶点创建一条直线
     const line = new THREE.LineSegments(geometry, material);
+    // 将直线添加到场景
     this.scene.add(line);
   }
   render() {
