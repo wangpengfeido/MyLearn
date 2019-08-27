@@ -51,10 +51,13 @@ class App {
   }
 
   initLight() {
-    // 点光源是理想化为质点的向四面八方发出光线的光源
     let light1 = new THREE.PointLight(0xff0000);
     light1.position.set(0, 0, 50);
     this.scene.add(light1);
+
+    let light2 = new THREE.DirectionalLight(0x00ff00, 1);
+    light2.position.set(0, 0, 1000);
+    this.scene.add(light2);
   }
 
   initObject() {
