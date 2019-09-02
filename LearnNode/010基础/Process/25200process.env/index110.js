@@ -2,9 +2,10 @@ const process = require('process');
 
 /**
  * process.env
- * 获取用户的环境变量
+ * 获取用户的环境变量列表
  */
 console.log(process.env.NODE_ENV);
+console.log(process.env);
 
 
 /**

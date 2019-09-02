@@ -12,7 +12,9 @@ class MyReadableStream extends stream.Readable {
     while (dataToPush && super.push(dataToPush)) {
       dataToPush = data[this.n++];
     }
-    super.push(null);
+    if (!dataToPush) {
+      super.push(null);
+    }
   }
 }
 

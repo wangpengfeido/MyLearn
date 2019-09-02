@@ -3,12 +3,12 @@
  */
 
 const stream = require('stream');
+const fs = require('fs');
 
-/**
- * Constructor: new stream.Writable([options])
- * 实现可写流
- */
 const myWritable = new stream.Writable();
 myWritable._write = function(chunk, encoding, callback) {
-
+  console.log(chunk);
+  callback();
 };
+
+fs.createReadStream('../test.txt').pipe(myWritable);

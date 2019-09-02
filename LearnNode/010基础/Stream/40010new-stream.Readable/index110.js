@@ -16,7 +16,9 @@ myReadable._read = function(size) {
   while (dataToPush && myReadable.push(dataToPush)) {
     dataToPush = data[n++];
   }
-  myReadable.push(null);
+  if (!dataToPush) {
+    myReadable.push(null);
+  }
 };
 
 myReadable.on('data', chunk => {
