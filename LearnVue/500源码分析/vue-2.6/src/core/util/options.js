@@ -394,7 +394,7 @@ export function mergeOptions (
     checkComponents(child)
   }
 
-  // 当child是Vue类时，将其赋值为options
+  // 当child是Vue类时，取其options
   if (typeof child === 'function') {
     child = child.options
   }
@@ -408,7 +408,7 @@ export function mergeOptions (
   // 但是只有它是一个原始的options对象而不是另一个mergeOptions结果时才会调用。这个判断是根据_base完成的。
   if (!child._base) {
     if (child.extends) {
-      // 将child的extends选项合并进parent的options
+      // 将child的extends选项递归合并进parent的options
       parent = mergeOptions(parent, child.extends, vm)
     }
     if (child.mixins) {

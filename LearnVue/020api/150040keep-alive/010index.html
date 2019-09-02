@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>component</title>
+</head>
+<body>
+
+<div id="app">
+  <div>
+    <label><input type="radio" value="component-one" v-model="currentComponent">one</label>
+    <label><input type="radio" value="component-two" v-model="currentComponent">two</label>
+  </div>
+  <div>text:<input v-model="text"></div>
+  <div>
+    <keep-alive>
+      <component :is="currentComponent" :text="text"></component>
+    </keep-alive>
+  </div>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="./010index.js"></script>
+</body>
+</html>

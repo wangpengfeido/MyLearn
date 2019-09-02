@@ -9,6 +9,7 @@ class App {
     this.camera = null;
     this.scene = null;
   }
+
   start() {
     this.initThree();
     this.initCamera();
@@ -17,11 +18,12 @@ class App {
     this.initObject();
     this.render();
   }
+
   initThree() {
     const dom_canvasBox = document.querySelector('#canvas-box');
     this.width = dom_canvasBox.clientWidth;
     this.height = dom_canvasBox.clientHeight;
-    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer = new THREE.WebGLRenderer({antialias: true});
     this.renderer.setSize(this.width, this.height);
     dom_canvasBox.appendChild(this.renderer.domElement);
     this.renderer.setClearColor(0xffffff, 1.0);
@@ -32,6 +34,7 @@ class App {
     this.stats.domElement.style.top = '0';
     dom_canvasBox.appendChild(this.stats.domElement);
   }
+
   initCamera() {
     this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 10000);
     this.camera.position.x = 600;
@@ -42,21 +45,21 @@ class App {
     this.camera.up.z = 0;
     this.camera.lookAt(0, 0, 0);
   }
+
   initScene() {
     this.scene = new THREE.Scene();
   }
-  initLight() {
-    // 可以看到结果：只被环境光照到的地方是绿色，能同时被环境光和方向光照到的地方混合为黄色
-    let light1 = new THREE.AmbientLight(0x00ff00);
-    this.scene.add(light1);
 
-    let light2 = new THREE.DirectionalLight(0xff0000, 1);
-    light2.position.set(0, 0, 1000);
-    this.scene.add(light2);
+  initLight() {
+    // 点光源是理想化为质点的向四面八方发出光线的光源
+    let light1 = new THREE.PointLight(0xff0000);
+    light1.position.set(0, 0, 50);
+    this.scene.add(light1);
   }
+
   initObject() {
     const geometry = new THREE.BoxGeometry(200, 100, 50, 4, 4);
-    const material = new THREE.MeshLambertMaterial({ color: 0xffffff });
+    const material = new THREE.MeshLambertMaterial({color: 0xffffff});
     const mesh = new THREE.Mesh(geometry, material);
     this.scene.add(mesh);
 
@@ -85,6 +88,7 @@ class App {
     mesh6.position.set(0, 0, -100);
     this.scene.add(mesh6);
   }
+
   render() {
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(() => {
