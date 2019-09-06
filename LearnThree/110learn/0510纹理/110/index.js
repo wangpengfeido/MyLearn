@@ -54,15 +54,18 @@ class App {
 
   initObject() {
     const geometry = new THREE.PlaneGeometry(500, 300, 1, 1);
-    geometry.vertices[0].uv = new THREE.Vector2(0, 0);
-    geometry.vertices[1].uv = new THREE.Vector2(0.5, 0);
-    geometry.vertices[2].uv = new THREE.Vector2(1, 1);
-    geometry.vertices[3].uv = new THREE.Vector2(0, 1);
+
+    // 可以在geometry上定义uv
+    // faceVertexUvs是一个三维数组，第一维代表哪一个层，第二位代表哪一个
+    console.log(geometry.faceVertexUvs);
+    // geometry.faceVertexUvs[0] = [];
+    // geometry.faceVertexUvs[0][0] = [new THREE.Vector2(0, 0), new THREE.Vector2(1, 0), new THREE.Vector2(0, 1)];
+    // geometry.faceVertexUvs[0][1] = [new THREE.Vector2(1, 0), new THREE.Vector2(1, 1), new THREE.Vector2(0, 1)];
 
     // 加载纹理图片
     const texture = new THREE.TextureLoader().load('../../../demo-assets/test.jpg');
     const material = new THREE.MeshBasicMaterial({ map: texture });
-    
+
     const mesh = new THREE.Mesh(geometry, material);
     this.scene.add(mesh);
   }
