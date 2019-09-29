@@ -1,3 +1,34 @@
+class ClockCanvas {
+  constructor() {
+    this.canvas = null;
+    this.ctx = null;
+
+    this.init();
+  }
+  init() {
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
+
+    this.canvas.width = 128;
+    this.canvas.height = 128;
+
+    this.draw();
+    setInterval(() => {
+      this.draw();
+    }, 1000);
+  }
+
+  draw() {
+    this.ctx.clearRect(0, 0, 128, 128);
+    this.ctx.fillStyle = '#ffff00';
+    this.ctx.fillRect(0, 0, 128, 128);
+    this.ctx.fillStyle = '#000000';
+    this.ctx.font = '30px arial';
+    const date = new Date();
+    this.ctx.fillText(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`, 10, 70);
+  }
+}
+
 class App {
   constructor() {
     this.stats = null;
@@ -8,6 +39,10 @@ class App {
     this.renderer = null;
     this.camera = null;
     this.scene = null;
+
+    this.mesh = null;
+
+    this.clockCanvas = new ClockCanvas().canvas;
   }
 
   start() {
@@ -37,9 +72,9 @@ class App {
 
   initCamera() {
     this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 10000);
-    this.camera.position.x = 0;
-    this.camera.position.y = 0;
-    this.camera.position.z = 800;
+    this.camera.position.x = 400;
+    this.camera.position.y = 400;
+    this.camera.position.z = 400;
     this.camera.up.x = 0;
     this.camera.up.y = 1;
     this.camera.up.z = 0;
@@ -50,27 +85,27 @@ class App {
     this.scene = new THREE.Scene();
   }
 
-  initLight() {}
+  initLight() {
+    let light = new THREE.AmbientLight(0x00ff00);
+    light.position.set(100, 100, 200);
+    this.scene.add(light);
+  }
 
   initObject() {
-    const geometry = new THREE.PlaneGeometry(500, 300, 1, 1);
+    const geometry = new THREE.BoxGeometry(100, 100, 100);
 
-    // 可以在geometry上定义uv
-    // faceVertexUvs是一个三维数组，第一维代表哪一个层，第二位代表哪一个
-    console.log(geometry.faceVertexUvs);
-    // geometry.faceVertexUvs[0] = [];
-    // geometry.faceVertexUvs[0][0] = [new THREE.Vector2(0, 0), new THREE.Vector2(1, 0), new THREE.Vector2(0, 1)];
-    // geometry.faceVertexUvs[0][1] = [new THREE.Vector2(1, 0), new THREE.Vector2(1, 1), new THREE.Vector2(0, 1)];
-
-    // 加载纹理图片
-    const texture = new THREE.TextureLoader().load('../../../demo-assets/test.jpg');
+    // 使用canvas作为纹理
+    const texture = new THREE.CanvasTexture(this.clockCanvas);
     const material = new THREE.MeshBasicMaterial({ map: texture });
 
-    const mesh = new THREE.Mesh(geometry, material);
-    this.scene.add(mesh);
+    this.mesh = new THREE.Mesh(geometry, material);
+    this.scene.add(this.mesh);
   }
 
   render() {
+    // 需要在需要更新纹理时，将needsUpdate设置为true
+    this.mesh.material.map.needsUpdate = true;
+
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(() => {
       this.render();
