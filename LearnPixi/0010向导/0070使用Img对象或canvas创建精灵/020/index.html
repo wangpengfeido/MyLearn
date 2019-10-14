@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PIXI</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <button class="btn">更换纹理</button>
+    <canvas class="texture-canvas" width="100" height="100"></canvas>
+  </head>
+  <body>
+    <script>
+      const canvas = document.querySelector('.texture-canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'green';
+      ctx.fillRect(10, 10, 60, 60);
+      ctx.fillStyle = 'red';
+      ctx.fillRect(40, 40, 90, 90);
+    </script>
+    <script src="../../../node_modules/pixi.js/dist/pixi.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
