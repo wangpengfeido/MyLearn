@@ -7,20 +7,18 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view);
 
 let cat;
-PIXI.loader.add('../../assets/cat.png').load(() => {
-  cat = new PIXI.Sprite(PIXI.loader.resources['../../assets/cat.png'].texture);
-  app.stage.addChild(cat);
+PIXI.Loader.shared.add('../../assets/sprite.png').load(() => {
+  // 创建雪碧图纹理
+  const texture = PIXI.loader.resources['../../assets/sprite.png'].texture;
 
-  // 改变锚点(锚点是旋转和移动等的基准点)
-  // cat.anchor.x = 0.5;
-  // cat.anchor.y = 0.5;
-  // 或
-  cat.anchor.set(0.5, 0.5);
+  // 创建一个矩形对象，矩形对象定义了从雪碧图纹理上需要取的大小和位置
+  let rectangle = new PIXI.Rectangle(96, 64, 32, 32);
+  // 设置纹理使用的部分
+  texture.frame = rectangle;
 
-  cat.x = 96;
-  cat.y = 96;
-
-  cat.scale.set(1.3, 1.3);
-
-  cat.rotation = 0.5;
+  // 从纹理创建精灵
+  let rocket = new PIXI.Sprite(texture);
+  rocket.x = 32;
+  rocket.y = 32;
+  app.stage.addChild(rocket);
 });

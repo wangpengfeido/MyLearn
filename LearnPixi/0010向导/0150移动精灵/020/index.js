@@ -1,6 +1,6 @@
 const app = new PIXI.Application({
-  width: 256,
-  height: 256,
+  width: 512,
+  height: 512,
   antialias: true,
 });
 
@@ -11,16 +11,14 @@ PIXI.Loader.shared.add('../../assets/cat.png').load(() => {
   cat = new PIXI.Sprite(PIXI.loader.resources['../../assets/cat.png'].texture);
   app.stage.addChild(cat);
 
-  // 改变锚点(锚点是旋转和移动等的基准点)
-  // cat.anchor.x = 0.5;
-  // cat.anchor.y = 0.5;
-  // 或
-  cat.anchor.set(0.5, 0.5);
-
   cat.x = 96;
   cat.y = 96;
 
-  cat.scale.set(1.3, 1.3);
-
-  cat.rotation = 0.5;
+  gameLoop();
 });
+
+// 也可以使用requestAnimationFrame创建循环
+function gameLoop() {
+  requestAnimationFrame(gameLoop);
+  cat.x += 1;
+}
