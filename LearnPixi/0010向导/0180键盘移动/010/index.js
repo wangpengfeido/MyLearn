@@ -20,6 +20,48 @@ PIXI.Loader.shared.add('../../assets/cat.png').load(() => {
     up = keyboard(38),
     right = keyboard(39),
     down = keyboard(40);
+  left.press = () => {
+    cat.vx = -5;
+    cat.vy = 0;
+  };
+  left.release = () => {
+    //If the left arrow has been released, and the right arrow isn't down,
+    //and the cat isn't moving vertically:
+    //Stop the cat
+    if (!right.isDown && cat.vy === 0) {
+      cat.vx = 0;
+    }
+  };
+  //Up
+  up.press = () => {
+    cat.vy = -5;
+    cat.vx = 0;
+  };
+  up.release = () => {
+    if (!down.isDown && cat.vx === 0) {
+      cat.vy = 0;
+    }
+  };
+  //Right
+  right.press = () => {
+    cat.vx = 5;
+    cat.vy = 0;
+  };
+  right.release = () => {
+    if (!left.isDown && cat.vy === 0) {
+      cat.vx = 0;
+    }
+  };
+  //Down
+  down.press = () => {
+    cat.vy = 5;
+    cat.vx = 0;
+  };
+  down.release = () => {
+    if (!up.isDown && cat.vx === 0) {
+      cat.vy = 0;
+    }
+  };
 
   state = play;
 
@@ -31,9 +73,6 @@ function gameLoop(delta) {
 }
 
 function play(delta) {
-  cat.vx = 1;
-  cat.vy = 1;
-
   cat.x += cat.vx;
   cat.y += cat.vy;
 }
