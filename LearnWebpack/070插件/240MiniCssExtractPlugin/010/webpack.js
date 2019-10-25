@@ -4,10 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
-    main: './src/01.js',
+    first: './src/first.js',
   },
   output: {
-    filename: '[name].[chunkhash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, './dist'),
   },
   mode: 'development',
@@ -26,7 +26,7 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css',
+      filename: '[name].css',
       chunkFilename: '[id].css',
     }),
   ],

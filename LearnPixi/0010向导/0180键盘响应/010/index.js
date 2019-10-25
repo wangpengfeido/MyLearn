@@ -9,7 +9,7 @@ document.body.appendChild(app.view);
 let cat;
 let state;
 PIXI.Loader.shared.add('../../assets/cat.png').load(() => {
-  cat = new PIXI.Sprite(PIXI.loader.resources['../../assets/cat.png'].texture);
+  cat = new PIXI.Sprite(PIXI.Loader.shared.resources['../../assets/cat.png'].texture);
   cat.x = 96;
   cat.y = 96;
   cat.vx = 0;
@@ -20,46 +20,49 @@ PIXI.Loader.shared.add('../../assets/cat.png').load(() => {
     up = keyboard(38),
     right = keyboard(39),
     down = keyboard(40);
+
+  // left
   left.press = () => {
     cat.vx = -5;
-    cat.vy = 0;
   };
   left.release = () => {
-    //If the left arrow has been released, and the right arrow isn't down,
-    //and the cat isn't moving vertically:
-    //Stop the cat
-    if (!right.isDown && cat.vy === 0) {
+    if (!right.isDown) {
       cat.vx = 0;
-    }
-  };
-  //Up
-  up.press = () => {
-    cat.vy = -5;
-    cat.vx = 0;
-  };
-  up.release = () => {
-    if (!down.isDown && cat.vx === 0) {
-      cat.vy = 0;
+    } else {
+      cat.vx = 5;
     }
   };
   //Right
   right.press = () => {
     cat.vx = 5;
-    cat.vy = 0;
   };
   right.release = () => {
-    if (!left.isDown && cat.vy === 0) {
+    if (!left.isDown) {
       cat.vx = 0;
+    } else {
+      cat.vx = -5;
+    }
+  };
+  //Up
+  up.press = () => {
+    cat.vy = -5;
+  };
+  up.release = () => {
+    if (!down.isDown) {
+      cat.vy = 0;
+    } else {
+      cat.vy = 5;
     }
   };
   //Down
   down.press = () => {
     cat.vy = 5;
-    cat.vx = 0;
   };
   down.release = () => {
-    if (!up.isDown && cat.vx === 0) {
+    if (!up.isDown) {
       cat.vy = 0;
+    } else {
+      cat.vy = -5;
     }
   };
 
@@ -105,6 +108,6 @@ function keyboard(keyCode) {
     },
   };
   window.addEventListener('keydown', key.downHandler);
-  window.addEventListener('keydown', key.upHandler);
+  window.addEventListener('keyup', key.upHandler);
   return key;
 }
