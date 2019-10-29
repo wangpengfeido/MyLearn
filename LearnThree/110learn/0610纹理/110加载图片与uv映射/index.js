@@ -62,7 +62,7 @@ class App {
     // geometry.faceVertexUvs[0][1] = [new THREE.Vector2(1, 0), new THREE.Vector2(1, 1), new THREE.Vector2(0, 1)];
 
     // 加载纹理图片
-    const texture = new THREE.TextureLoader().load('../../../demo-assets/test.jpg');
+    const texture = new THREE.TextureLoader().load('../../../assets/test.jpg');
     const material = new THREE.MeshBasicMaterial({ map: texture });
 
     const mesh = new THREE.Mesh(geometry, material);
