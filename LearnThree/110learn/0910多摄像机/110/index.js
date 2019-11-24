@@ -2,6 +2,8 @@ class View {
   constructor(canvas, fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight) {
     this.viewWidth = viewWidth;
     this.viewHeight = viewHeight;
+    this.fullWidth = fullWidth;
+    this.fullHeight = fullHeight;
     this.camera = null;
     this.context = null;
 
@@ -10,18 +12,18 @@ class View {
 
     this.context = canvas.getContext('2d');
 
-    this.camera = new THREE.PerspectiveCamera(20, viewWidth / viewHeight, 1, 10000);
-    // 只显示相机的一部分
+    this.camera = new THREE.PerspectiveCamera(20, fullWidth / fullHeight, 1, 10000);
+    // 只使用相机的一部分
     this.camera.setViewOffset(fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight);
+    this.camera.position.x = 1000;
+    this.camera.position.y = 1000;
     this.camera.position.z = 1800;
   }
   render(renderer, scene, mouseX, mouseY) {
-    // this.camera.position.x += (mouseX - this.camera.position.x) * 0.05;
-    // this.camera.position.y += (-mouseY - this.camera.position.y) * 0.05;
     this.camera.lookAt(scene.position);
 
-    // 设置视口
-    renderer.setViewport(100, 100, this.viewWidth, this.viewHeight);
+    // 设置视口。将图像绘制到窗口的左上角
+    renderer.setViewport(0, this.fullHeight - this.viewHeight, this.viewWidth, this.viewHeight);
     renderer.render(scene, this.camera);
     // 将渲染结果绘制到canvas
     this.context.drawImage(renderer.domElement, 0, 0);
@@ -67,7 +69,6 @@ class App {
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.fullWidth, this.fullHeight);
     this.renderer.setClearColor(0xffffff, 1.0);
-    document.body.appendChild(this.renderer.domElement);
   }
 
   initScene() {

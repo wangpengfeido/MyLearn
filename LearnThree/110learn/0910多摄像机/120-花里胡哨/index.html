@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #canvas1,
+      #canvas2,
+      #canvas3 {
+        position: relative;
+        display: block;
+        border: 1px solid red;
+      }
+      #canvas1 {
+        width: 300px;
+        height: 200px;
+      }
+      #canvas2 {
+        width: 400px;
+        height: 100px;
+        left: 150px;
+      }
+      #canvas3 {
+        width: 200px;
+        height: 300px;
+        left: 75px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <canvas id="canvas1"></canvas>
+      <canvas id="canvas2"></canvas>
+      <canvas id="canvas3"></canvas>
+    </div>
+
+    <script src="../../../node_modules/three/build/three.js"></script>
+    <script src="../../../node_modules/stats.js/build/Stats.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
