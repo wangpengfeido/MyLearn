@@ -7,11 +7,11 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view);
 
 // 加载纹理并缓存
-PIXI.loader.add('../assets/cat.png').load(() => {
+PIXI.Loader.shared.add('../assets/cat.png').load(() => {
   // 加载完成的回调
 });
 // 使用纹理创建精灵
 const sprite = new PIXI.Sprite(
   // 使用缓存的纹理
-  PIXI.loader.resources['../assets/cat.png'].texture
+  PIXI.Loader.shared.resources['../assets/cat.png'].texture
 );
