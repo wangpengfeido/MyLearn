@@ -1,5 +1,5 @@
-// 使用jest.fn生成一个mock函数
 test('using mock', () => {
+  // 使用jest.fn生成一个mock函数
   const mockCallback = jest.fn(x => 42 + x);
   Array.prototype.forEach.call([0, 1], mockCallback);
 
