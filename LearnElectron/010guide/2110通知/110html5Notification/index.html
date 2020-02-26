@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  </head>
+  <body>
+    <div>
+      <button class="notification-btn">通知</button>
+    </div>
+    <script>
+      document.querySelector(".notification-btn").addEventListener("click", () => {
+        // 使用html5 Notification。
+        // 它只能在渲染进程中使用
+        const myNotification = new Notification("通知标题", { body: "通知正文" });
+        myNotification.addEventListener("click", () => {
+          console.log("点击了通知");
+        });
+      });
+    </script>
+  </body>
+</html>
