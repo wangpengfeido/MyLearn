@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="test1">test1</div>
+    <div class="test2">test2</div>
+    <div class="test3" onclick="handleClick3()">test3</div>
+
+    <div class="test-passive">test-passive</div>
+
+    <div class="test-ancesors">
+      <div onclick="console.log('sdf')">test-ancesors</div>
+    </div>
+
+    <script>
+      document.querySelector('.test1').addEventListener('click', () => {
+        console.log('test1');
+      });
+      document.querySelector('.test2').onclick = function() {
+        console.log('test2');
+      };
+      function handleClick3() {
+        console.log('test3');
+      }
+      document.querySelector('.test-passive').addEventListener(
+        'click',
+        () => {
+          console.log('test-passive');
+        },
+        { passive: true }
+      );
+      document.querySelector('.test-ancesors').addEventListener('click', () => {
+        console.log('test-ancesors');
+      });
+      function bindByFramework(className, eventName, callback) {
+        document.querySelector(`.${className}`).addEventListener(eventName, callback);
+      }
+    </script>
+  </body>
+</html>

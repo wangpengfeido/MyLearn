@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div class="test">test</div>
+    </div>
+    <div>
+      <button class="modify-sub-tree">modify sub tree</button>
+    </div>
+
+    <script>
+      const dom_test = document.querySelector('.test');
+      document.querySelector('.modify-sub-tree').addEventListener('click', () => {
+        dom_test.innerHTML += '!';
+      });
+    </script>
+  </body>
+</html>
