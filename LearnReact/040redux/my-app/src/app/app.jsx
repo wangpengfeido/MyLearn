@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './app.css';
 import {Link, Route} from "react-router-dom";
-import {AaaBase} from "./aaa-base/aaa-base";
+import {AagDesc} from './aag-desc/index.jsx';
+import {AaqBase} from "./aaq-base/aaa-base.jsx";
 import {AbaAdvancedTourial} from "./aba-advanced-tourial/aba-advanced-tourial";
 
 export class App extends Component {
@@ -10,14 +11,15 @@ export class App extends Component {
       <div className="app">
         <div className="menu">
           <ul>
+            <li><Link to="/aag-desc">简介</Link></li>
             <li>
-              <div><Link to="/aaa-base">基础</Link></div>
+              <div><Link to="/aaq-base">基础</Link></div>
               <ul>
-                <li><Link to="/aaa-base/aaa-action">action</Link></li>
-                <li><Link to="/aaa-base/aba-reducer">reducer</Link></li>
-                <li><Link to="/aaa-base/aca-store">store</Link></li>
-                <li><Link to="/aaa-base/ada-data-flow">data flow</Link></li>
-                <li><Link to="/aaa-base/aea-with-react">with react</Link></li>
+                <li><Link to="/aaq-base/aaa-action">action</Link></li>
+                <li><Link to="/aaq-base/aba-reducer">reducer</Link></li>
+                <li><Link to="/aaq-base/aca-store">store</Link></li>
+                <li><Link to="/aaq-base/ada-data-flow">data flow</Link></li>
+                <li><Link to="/aaq-base/aea-with-react">with react</Link></li>
               </ul>
             </li>
             <li>
@@ -29,7 +31,8 @@ export class App extends Component {
           </ul>
         </div>
         <div className="content">
-          <Route path='/aaa-base' component={AaaBase}></Route>
+          <Route path="/aag-desc" component={AagDesc}></Route>
+          <Route path='/aaq-base' component={AaqBase}></Route>
           <Route path='/aba-advanced-tourial' component={AbaAdvancedTourial}></Route>
         </div>
       </div>
