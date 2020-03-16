@@ -38,12 +38,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "lodash": "^4.17.11",
-    "url-loader": "^3.0.0"
-=======
     "babel-register": "^6.26.0",
     "lodash": "^4.17.11"
->>>>>>> f7aa203367e5042819e1ae711b87c9e0f87c9df9
   }
 }
