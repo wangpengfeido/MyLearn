@@ -18,3 +18,7 @@ window.resize = function() {
   app.resize();
   // app.renderer.resize(app.resizeTo.clientWidth, app.resizeTo.clientHeight);
 };
+
+// resize()方法会自动设置renderer宽高为resizeTo的大小
+// 相当于 app.renderer.resize(app.resizeTo.clientWidth, app.resizeTo.clientHeight);
+
