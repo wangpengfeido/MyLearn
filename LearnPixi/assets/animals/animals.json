@@ -25,6 +25,9 @@
       "pivot": { "x": 0.5, "y": 0.5 }
     }
   },
+  "animations": {
+    "animals": ["cat.png","hedgehog.png","tiger.png"]
+  },
   "meta": {
     "app": "http://www.codeandweb.com/texturepacker",
     "version": "1.0",
