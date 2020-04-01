@@ -9,6 +9,11 @@ document.body.appendChild(app.view);
 // 尝试改变：
 app.renderer.resize(500, 500);
 // app.view.width = 600;
+
+// 尝试改变：
+// app.view.style.width = '1000px';
+// app.view.style.height = '500px';
+
 console.log(app.view.width, app.renderer.width);
 
 const rect1 = new PIXI.Graphics();
@@ -17,9 +22,6 @@ rect1.drawRect(0, 0, 400, 400);
 rect1.endFill();
 app.stage.addChild(rect1);
 
-// 尝试改变：
-// app.view.style.width = '1000px';
-// app.view.style.height = '500px';
 
 // 结论：
 
