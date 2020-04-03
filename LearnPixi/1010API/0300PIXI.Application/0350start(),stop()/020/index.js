@@ -20,6 +20,6 @@ window.start = () => {
   app.start();
 };
 window.stop = () => {
-  // app.stop();
-  app.ticker.stop();
+  app.stop();
+  // app.ticker.stop();
 };
