@@ -10,6 +10,7 @@ server.listen(8123, (err) => {
   console.log(`listening ${8123}`)
 });
 
+server.use('/dist',express.static('dist'));
 
 server.get('*', (req, res) => {
   const renderer = VueServerRenderer.createRenderer({

@@ -179,7 +179,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://localhost:63342/server-side-rendering/060%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%BF%80%E6%B4%BB/dist/";
+/******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -205,7 +205,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./app/App.vue?../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./app/App.vue?../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -295,7 +295,7 @@ eval("/* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  name: \"App\",\n});\n\n\n//# sourceURL=webpack:///./app/App.vue?../node_modules/vue-loader/lib??vue-loader-options");
+eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  name: \"App\",\n});\n\n\n//# sourceURL=webpack:///./app/App.vue?../node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -473,7 +473,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"../node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var _app_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app/app */ \"./app/app.js\");\n\r\n\r\n\r\nconst {app, router, store} = Object(_app_app__WEBPACK_IMPORTED_MODULE_1__[\"createApp\"])();\r\n\r\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].mixin({\r\n  beforeMount() {\r\n    const {asyncData} = this.$options;\r\n    if (asyncData) {\r\n      this.dataPromise = asyncData({\r\n        store: this.$store,\r\n        route: this.$route,\r\n      });\r\n    }\r\n  },\r\n  beforeRouteUpdate(to, from, next) {\r\n    const {asyncData} = this.$options;\r\n    if (asyncData) {\r\n      asyncData({\r\n        store: this.$store,\r\n        route: to,\r\n      }).then(next).catch(next);\r\n    } else {\r\n      next();\r\n    }\r\n  },\r\n});\r\n\r\nrouter.onReady(() => {\r\n  app.$mount('#app');\r\n});\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./entry-client.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"../node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var _app_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app/app */ \"./app/app.js\");\n\r\n\r\n\r\nconst {app, router, store} = Object(_app_app__WEBPACK_IMPORTED_MODULE_1__[\"createApp\"])();\r\n\r\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].mixin({\r\n  beforeMount() {\r\n    const {asyncData} = this.$options;\r\n    if (asyncData) {\r\n      this.dataPromise = asyncData({\r\n        store: this.$store,\r\n        route: this.$route,\r\n      });\r\n      this.dataPromise.then(()=>{\r\n        console.log('before mount async data in client.')\r\n      })\r\n    }\r\n  },\r\n  beforeRouteUpdate(to, from, next) {\r\n    const {asyncData} = this.$options;\r\n    if (asyncData) {\r\n      asyncData({\r\n        store: this.$store,\r\n        route: to,\r\n      }).then(next).catch(next);\r\n    } else {\r\n      next();\r\n    }\r\n  },\r\n});\r\n\r\nrouter.onReady(() => {\r\n  app.$mount('#app');\r\n});\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./entry-client.js?");
 
 /***/ })
 

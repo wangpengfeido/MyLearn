@@ -11,6 +11,9 @@ Vue.mixin({
         store: this.$store,
         route: this.$route,
       });
+      this.dataPromise.then(()=>{
+        console.log('before mount async data in client.')
+      })
     }
   },
   beforeRouteUpdate(to, from, next) {
