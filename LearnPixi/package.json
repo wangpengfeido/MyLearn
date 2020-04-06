@@ -1,0 +1,19 @@
+{
+  "name": "learnpixi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@pixi/canvas-renderer": "^5.2.1",
+    "@tweenjs/tween.js": "^18.5.0",
+    "lodash": "^4.17.15",
+    "pixi.js": "^5.2.1",
+    "pixi.js-legacy": "^5.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
