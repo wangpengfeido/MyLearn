@@ -42,6 +42,59 @@
               未知嵌套深度的动态嵌套路由
             </nuxt-link>
           </li>
+          <li>
+            <nuxt-link to="/baaRouter/bfaTransitions">
+              过渡动效
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/baaRouter/bgaMiddleware">
+              中间件
+            </nuxt-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <div>布局</div>
+        <ul>
+          <li>
+            <nuxt-link to="/bbaViews/bbaCustomLayout">自定义布局</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/bbaViews/bbaErrorPage/sdf">
+              自定义错误页面
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/bbaViews/bdaHtmlHead">
+              html head
+            </nuxt-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <div>异步数据</div>
+        <ul>
+          <li>
+            <nuxt-link to="/bcaAsyncData/bbaAsyncDataMethod">
+              asyncData 方法
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/bcaAsyncData/bcaContext/aaa">
+              context对象
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/bcaAsyncData/bdaListenQuery/aaa">
+              监听query参数改变
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/bcaAsyncData/beaHandlingError">
+              错误处理
+            </nuxt-link>
+          </li>
         </ul>
       </li>
     </ul>
