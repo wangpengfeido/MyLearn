@@ -103,8 +103,8 @@ function Six() {
                 <span>{0}</span>
                 <span>{0 && 'hello'}</span>
                 {/*所以表达式要确保是布尔值*/}
-                <span>{0 > 0}</span>
-                <span>{0 > 0 && 'hello'}</span>
+                <span>{1 > 0}</span>
+                <span>{1 > 0 && 'hello'}</span>
             </div>
             <div>
                 {/*如果要输出上面的值，应该转换为字符串*/}
