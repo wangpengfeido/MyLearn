@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编程式导航</title>
+</head>
+<body>
+    <divs id="app">
+      <fieldset>
+        <p>router.push 会向 history 堆栈添加一个新纪录</p>
+        <button @click="$router.push('/one')">push('/one')</button>
+        <p>使用对象</p>
+        <button @click="$router.push({path:'/one'})">push({path:'/one'})</button>
+        <p>命名路由</p>
+        <button @click="$router.push({name:'two',params:{id:1}})">push({name:'two',params:{id:1}})</button>
+        <p>如果提供了path，params将被忽略</p>
+        <button @click="$router.push({path:'/two/10',params:{id:1}})">push({path:'/two/10',params:{id:1}})</button>
+      </fieldset>
+        <router-view></router-view>
+    </divs>
+
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script src="./index010.js"></script>
+</body>
+</html>

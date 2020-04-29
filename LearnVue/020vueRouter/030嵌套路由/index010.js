@@ -2,10 +2,12 @@
  * Created by dell on 2017/8/27.
  */
 const componentOne = {
-    template: '<div>this is component one\
-    <div>id:{{$route.params.id}}</div>\
-    <router-view></router-view>\
-    </div>'
+    template: `
+    <div>
+      this is component one
+      <div>id:{{$route.params.id}}</div>
+      <router-view></router-view>
+    </div>`
 };
 const componentOneOne = {
     template: '<div>this is component one one</div>'
@@ -24,23 +26,23 @@ const routes = [
     {
         path: '/one/:id',
         component: componentOne,
+        // 使用 children 嵌套路由
         children: [
-            //当没有路由匹配成功时，则匹配此路由
             {
                 path: '',
                 component: componentOneNull
             },
+            //子路由名字尽量不要与父路由名字相同，虽然这样可行，但在某些情况下会有不可预料的表现
             {
-                path: 'one',        //子路由名字尽量不要与父路由名字相同，虽然这样可行，但在某些情况下会有不可预料的表现
+                path: 'one',
                 component: componentOneOne
             },
             {
-                path: 'onetwo',
+                path: 'two',
                 component: componentOneTwo
             },
         ]
     },
-
     {path: '/two', component: componentTwo},
 ];
 const router = new VueRouter({

@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>开始</title>
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>嵌套路由</title>
+  </head>
+  <body>
     <div id="app">
-        <h1>hello world</h1>
-        <router-link to="/one">one</router-link>
-        <router-link to="/one/1">one1</router-link>
-        <router-link to="/one/1/one">oneone</router-link>
-        <router-link to="/one/1/onetwo">onetwo</router-link>
-        <router-link to="/one/1/asdf">oneasdf</router-link>
-        <router-link to="/two">two</router-link>
-        <router-view></router-view>
+      <div><router-link to="/one">/one----未匹配</router-link></div>
+      <fieldset>
+        <p>嵌套路由</p>
+        <div><router-link to="/one/1/one">/one/1/one----/one/:id--/one</router-link></div>
+        <div><router-link to="/one/1/two">/one/1/two----/one/:id--/two</router-link></div>
+      </fieldset>
+      <fieldset>
+        <p>空子路由</p>
+        <div><router-link to="/one/1">/one/1----/one/:id--/</router-link></div>
+        <div><router-link to="/one/1/asdf">/one/1/asdf----未匹配</router-link></div>
+      </fieldset>
+      <div><router-link to="/two">/two----/two</router-link></div>
+      <div><router-view></router-view></div>
     </div>
 
-    <script src="../../node_modules/vue/dist/vue.js"></script>
-    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
-    <script src="../../dist/020vueRouter/030嵌套路由/index010.js"></script>
-</body>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+    <script src="./index010.js"></script>
+  </body>
 </html>
