@@ -19,6 +19,7 @@ export class AcaUseState extends Component {
 }
 
 function One(props) {
+  // eslint-disable-next-line
   const [isOdd, setIsOdd] = useState(false);
   // 不可在渲染过程中改变state，它会导致渲染死循环
   // setIsOdd(props.n % 2 === 1);

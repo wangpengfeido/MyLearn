@@ -32,6 +32,7 @@ function logProps(WrappedComponent) {
             const {extraProp, ...passThroughProps} = this.props;
 
             // 传递给wrapped组件的额外props，一般是高阶组件的state或实例方法
+            // eslint-disable-next-line
             const injectedProp = this.state.other;
 
             // 传递props给wrapped组件

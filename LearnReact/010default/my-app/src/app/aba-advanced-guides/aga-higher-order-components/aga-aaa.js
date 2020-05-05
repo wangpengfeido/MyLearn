@@ -50,9 +50,6 @@ const GenderComponent = higherComponent(WrappedTwo, getUserGenderById);
 const UsersComponent = higherComponent(WrappedThree, getUsers);
 
 export class AgaAaa extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

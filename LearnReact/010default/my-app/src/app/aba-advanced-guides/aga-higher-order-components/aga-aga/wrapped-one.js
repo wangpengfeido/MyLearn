@@ -5,9 +5,6 @@ export function staticFunc() {
 }
 
 export class WrappedOne extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

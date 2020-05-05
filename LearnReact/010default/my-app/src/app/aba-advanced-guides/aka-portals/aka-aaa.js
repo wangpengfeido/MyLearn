@@ -9,9 +9,6 @@ import {isElement} from 'lodash';
  */
 
 class One extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         if (isElement(this.props.container)) {

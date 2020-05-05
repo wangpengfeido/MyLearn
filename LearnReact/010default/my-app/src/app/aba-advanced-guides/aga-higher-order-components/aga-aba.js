@@ -10,6 +10,7 @@ function WrappedOne(props) {
 // 不要改变原组件。而是使用组合
 
 ////////// 错误的做法：修改了原组件////////////////////////
+// eslint-disable-next-line
 function logProps(inputComponent) {
     inputComponent.prototype.componentWillReceiveProps = function (nextProps) {
         console.log('current props:', this.props);
