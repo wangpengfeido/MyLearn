@@ -8,7 +8,7 @@
     <div id="app">
       <h1>hello world</h1>
       <fieldset>
-        <p>在两个同父亲子路由间跳转时，父组件不会被重复渲染</p>
+        <p>在同一个路由的不同参数间跳转时，组件不会被重复渲染</p>
         <p>生命钩子不再重复执行，但可以通过watch监听，或通过beforeRouteUpdate守卫</p>
         <router-link to="/one/1">one/1----/one/:id</router-link>
         <router-link to="/one/2">one/2----/one/:id</router-link>
@@ -33,8 +33,8 @@
       <router-view></router-view>
     </div>
 
-    <script src="../node_modules/vue/dist/vue.js"></script>
-    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
     <script src="./index010.js"></script>
   </body>
 </html>
