@@ -29,9 +29,6 @@ function tryConvert(temperature, convert) {
 class TemperatureInput extends Component {
     // 让组件"受控"
     // 即属性值从父组件传入，值改变时触发事件，再通过父组件中的事件响应改变属性值
-    constructor(props) {
-        super(props);
-    }
 
     handleChange = (e) => {
         this.props.onTemperatureChange(e.target.value);

@@ -11,9 +11,6 @@ import {isElement} from 'lodash';
 /* 事件冒泡按照react的组件树结构进行，而不按照渲染的html dom树进行 */
 
 class Modal extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         if (isElement(this.props.container)) {

@@ -15,9 +15,6 @@ class WrappedOne extends Component {
 
 function logProps(WrappedComponent) {
     class LogProps extends Component {
-        constructor(props) {
-            super(props);
-        }
 
         componentDidUpdate(prevProps) {
             console.log('old props:', prevProps);

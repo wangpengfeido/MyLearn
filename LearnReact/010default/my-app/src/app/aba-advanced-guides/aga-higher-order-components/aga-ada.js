@@ -12,10 +12,6 @@ function WrappedOne(props) {
 function higherFunction(consoleText) {
     return function logProps(WrappedComponent) {
         return class extends Component {
-            constructor(props) {
-                super(props);
-            }
-
             componentWillReceiveProps(nextProps) {
                 console.log(consoleText);
                 console.log('current props:', this.props);

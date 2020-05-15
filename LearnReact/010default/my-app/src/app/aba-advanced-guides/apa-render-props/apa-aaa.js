@@ -1,12 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class ApaAaa extends Component {
-    render() {
-        return (
-            <div>
+import { Cat } from './Cat.jsx';
+import { Mouse } from './Mouse.jsx';
 
-            </div>
-        );
-    }
+export class ApaAaa extends Component {
+  render() {
+    return (
+      <fieldset>
+        <Mouse
+          render={(mouse) => {
+            return <Cat mouse={mouse}></Cat>;
+          }}
+        ></Mouse>
+      </fieldset>
+    );
+  }
 }
-

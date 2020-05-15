@@ -22,9 +22,6 @@ function One(props) {
 }
 
 export class AcaAeaConsumingMultipleContext extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

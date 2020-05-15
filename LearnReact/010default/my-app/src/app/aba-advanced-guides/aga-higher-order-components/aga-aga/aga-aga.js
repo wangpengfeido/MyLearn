@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
+// eslint-disable-next-line
 import {WrappedOne, staticFunc} from "./wrapped-one";
 
 /**

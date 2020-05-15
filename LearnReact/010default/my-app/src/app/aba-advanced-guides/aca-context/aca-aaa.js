@@ -6,9 +6,6 @@ import React, {Component} from 'react';
 const Context = React.createContext('one');
 
 class OneChild extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
