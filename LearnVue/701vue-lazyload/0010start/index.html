@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        background-color: #eeeeee;
+      }
+      img {
+        width: 150px;
+        height: 150px;
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <div v-for="(item) in imgList" :key="item.index">
+          <div>{{item.index}}</div>
+          <!-- <img :src="item.url" /> -->
+          <img v-lazy="item.url" />
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-lazyload/vue-lazyload.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
