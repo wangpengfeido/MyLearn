@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        background-color: #eeeeee;
+      }
+      img {
+        width: 150px;
+        height: 150px;
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <div>
+          <img v-lazy="'./sdf.jpg'" />
+        </div>
+        <div v-lazy-container="{selector:'img'}">
+          <img data-src="../assets/sdf.jpg" data-error="../assets/test.jpg" />
+          <img data-src="../assets/sdf.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-lazyload/vue-lazyload.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
