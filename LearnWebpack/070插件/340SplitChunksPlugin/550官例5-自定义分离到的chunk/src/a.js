@@ -1,6 +1,8 @@
+import { common29K } from '../../my-libs/common-29k';
 import { common31K } from '../../my-libs/common-31k';
 
 export function a() {
   console.log('this is a');
-  return common31K();
+  common29K();
+  common31K();
 }

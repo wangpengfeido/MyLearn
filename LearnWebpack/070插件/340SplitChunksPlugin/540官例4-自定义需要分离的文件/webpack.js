@@ -15,11 +15,10 @@ const configuration = {
     splitChunks: {
       cacheGroups: {
         commons: {
-          // minSize: 60000,
-          minSize: 10000,
-          name: 'commons', // chunk名
-          chunks: 'initial',
-          minChunks: 1,
+          name: 'vendor',
+          chunks: 'all',
+          // 默认： test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]my-libs[\\/]/,
         },
       },
     },

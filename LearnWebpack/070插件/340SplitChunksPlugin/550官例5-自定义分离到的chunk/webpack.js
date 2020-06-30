@@ -14,12 +14,15 @@ const configuration = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        commons: {
-          // minSize: 60000,
-          minSize: 10000,
-          name: 'commons', // chunk名
-          chunks: 'initial',
-          minChunks: 1,
+        commons1: {
+          name: 'vendor1',
+          chunks: 'all',
+          test: /[\\/]my-libs[\\/](common-29k)/,
+        },
+        commons2: {
+          name: 'vendor2',
+          chunks: 'all',
+          test: /[\\/]my-libs[\\/](common-31k)/,
         },
       },
     },
