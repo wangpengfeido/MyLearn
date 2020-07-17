@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>动态组件&异步组件</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label><input type="radio" value="component-one" v-model="currentComponent" />one</label>
+        <label><input type="radio" value="component-two" v-model="currentComponent" />two</label>
+      </div>
+      <br />
+
+      <div>
+        <!--使用is动态使用组件。见../../071组件基础/050/-->
+        <!--这里切换组件后，组件原来的状态丢失-->
+        <component :is="currentComponent"></component>
+      </div>
+      <br />
+    </div>
+
+    <script src="../../../node_modules/vue/dist/vue.js"></script>
+    <script src="./index010.js"></script>
+  </body>
+</html>
