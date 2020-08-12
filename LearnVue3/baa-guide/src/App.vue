@@ -4,6 +4,9 @@
       <div class="link-item">
         <router-link to="/caa-api">api</router-link>
       </div>
+      <div class="link-item">
+        <router-link to="/oaa-test">test</router-link>
+      </div>
     </div>
     <div class="content">
       <router-view></router-view>
@@ -46,6 +49,7 @@ body {
   }
   .content {
     flex-grow: 1;
+    width: 100%;
     height: 0;
   }
 }
