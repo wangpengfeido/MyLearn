@@ -6,7 +6,7 @@ const inputOptions = {
   plugins: [rollupJsonPlugin()],
 };
 const outputOptions = {
-  file: 'bundle.js',
+  file: 'dist/bundle.js',
   format: 'cjs',
 };
 

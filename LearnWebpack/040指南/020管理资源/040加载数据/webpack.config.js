@@ -34,6 +34,7 @@ module.exports = {
           'csv-loader',
         ]
       },
+      // 加载 xml 需要的 loader
       {
         test: /\.xml$/,
         use: [
