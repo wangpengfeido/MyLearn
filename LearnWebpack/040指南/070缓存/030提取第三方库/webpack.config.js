@@ -12,8 +12,17 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   optimization: {
-    // 将 runtime 拆分为单独的 chunk
     runtimeChunk: "single",
+    // 提取了引用的 node_modules 中的文件
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
   },
   plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin()],
 };

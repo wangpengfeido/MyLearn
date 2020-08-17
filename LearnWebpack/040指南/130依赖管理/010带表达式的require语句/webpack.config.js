@@ -8,12 +8,13 @@ module.exports = {
     app: "./src/index.js",
   },
   output: {
-    filename: "[name].[contenthash].bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
-  optimization: {
-    // 将 runtime 拆分为单独的 chunk
-    runtimeChunk: "single",
-  },
-  plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Output Management",
+    }),
+  ],
 };
