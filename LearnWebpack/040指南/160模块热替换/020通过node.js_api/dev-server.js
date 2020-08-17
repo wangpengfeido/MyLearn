@@ -14,7 +14,7 @@ server.listen(5000, () => {
   console.log('dev server listening on port 5000');
 });
 
-
+// 如果使用 webpack-dev-middleware，可以通过 webpack-hot-middleware 依赖包，在自定义 dev server 中启用 HMR。
 
 
 

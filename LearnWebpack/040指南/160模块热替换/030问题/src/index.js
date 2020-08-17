@@ -15,13 +15,13 @@ function component() {
   return element;
 }
 
-let element = component();       // 当print.js改变导致页面重新渲染时，重新获取要渲染的元素
+let element = component();       // 存储 element，以在 print.js 更新时重新渲染
 document.body.appendChild(element);
 
 if (module.hot) {
   module.hot.accept('./print.js', function () {
     console.log('Accepting the updated printMe module!');
-    // 当print.js改变导致页面重新渲染时，重新获取要渲染的元素
+    // 当 print.js 改变时，重新渲染元素
     document.body.removeChild(element);
     element = component();
     document.body.appendChild(element);

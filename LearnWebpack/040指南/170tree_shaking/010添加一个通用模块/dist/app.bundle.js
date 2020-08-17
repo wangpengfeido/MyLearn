@@ -91,10 +91,11 @@
   !*** ./src/index.js ***!
   \**********************/
 /*! no exports provided */
+/*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./src/math.js\");\n\r\n\r\n// 并未引用square方法\r\n// 但从打包好的bundle中可以看出，square仍然被打包在其中\r\n\r\nfunction component() {\r\n  var element = document.createElement('pre');\r\n\r\n  element.innerHTML = [\r\n    'Hello webpack!',\r\n    '5 cubed is equal to ' + Object(_math__WEBPACK_IMPORTED_MODULE_0__[\"cube\"])(5),\r\n  ].join('\\n\\n');\r\n\r\n\r\n  return element;\r\n}\r\n\r\ndocument.body.appendChild(component());\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./src/math.js\");\n\r\n\r\n// 并未引用square方法\r\n// 但从打包好的bundle中可以看出，square仍然被打包在其中，如果不启用tree shaking\r\n\r\nfunction component() {\r\n  var element = document.createElement('pre');\r\n\r\n  element.innerHTML = [\r\n    'Hello webpack!',\r\n    '5 cubed is equal to ' + Object(_math__WEBPACK_IMPORTED_MODULE_0__[/* cube */ \"a\"])(5),\r\n  ].join('\\n\\n');\r\n\r\n\r\n  return element;\r\n}\r\n\r\ndocument.body.appendChild(component());\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -103,10 +104,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mat
   !*** ./src/math.js ***!
   \*********************/
 /*! exports provided: square, cube */
+/*! exports used: cube */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"square\", function() { return square; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cube\", function() { return cube; });\nfunction square(x) {\r\n  return x * x;\r\n}\r\n\r\nfunction cube(x) {\r\n  return x * x * x;\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/math.js?");
+eval("/* unused harmony export square */\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"a\", function() { return cube; });\nfunction square(x) {\r\n  return x * x;\r\n}\r\n\r\nfunction cube(x) {\r\n  return x * x * x;\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/math.js?");
 
 /***/ })
 

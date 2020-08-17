@@ -17,8 +17,8 @@ function component() {
 
 document.body.appendChild(component());
 
-// 添加代码，在print.js更新时执行
-// 注意：现在print.js的更新还不会影响到printMe的执行
+// 在print.js更新时执行
+// 注意：现在print.js的更新还不会影响到上面绑定printMe的事件的执行结果
 if (module.hot) {
   module.hot.accept('./print.js', function () {
     console.log('Accepting the updated printMe module!');

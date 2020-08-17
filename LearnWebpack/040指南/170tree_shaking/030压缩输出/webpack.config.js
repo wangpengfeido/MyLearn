@@ -1,27 +1,20 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: "./src/index.js",
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, "dist"),
   },
-  // 使用production模式。从bundle看出，未引用的代码被去除了
+  // 使用production模式。它会启用 terser
+  // 从bundle看出，未引用的代码被去除了
   mode: "production",
   plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: 'Output Management',
-    }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin(),
   ],
 };
-
-
-
-
-
-
