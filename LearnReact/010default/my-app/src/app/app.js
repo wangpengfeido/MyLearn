@@ -83,6 +83,9 @@ export class App extends Component {
                   <Link to="/aba-advanced-guides/aia-jsx-in-depth">深入JSX</Link>
                 </li>
                 <li>
+                  <Link to="/aba-advanced-guides/aja-optimizing-performance">性能优化</Link>
+                </li>
+                <li>
                   <Link to="/aba-advanced-guides/aka-protals">protals</Link>
                 </li>
                 <li>

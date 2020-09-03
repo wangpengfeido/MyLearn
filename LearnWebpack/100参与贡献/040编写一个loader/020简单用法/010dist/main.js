@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/01.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/main.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/01.js":
-/*!*******************!*\
-  !*** ./src/01.js ***!
-  \*******************/
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('this is 01');\r\n\n\n//# sourceURL=webpack:///./src/01.js?");
+eval("console.log('this is main.!!!changed by loader1!!!??????');\r\n\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 

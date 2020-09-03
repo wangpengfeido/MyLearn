@@ -21,8 +21,8 @@ let nextTodoId = 0;
 export function addTodo(text) {
   // action type
   return {
-    id: nextTodoId++,
     type: ADD_TODO,
+    id: nextTodoId++,
     text
   }
 }

@@ -1,6 +1,6 @@
 class MyExampleWebpackPlugin {
   apply(compiler) {
-    // tap 到 compilation hook
+    // 进入 compilation hook，它将 compilation 作为参数
     compiler.hooks.compilation.tap('MyExampleWebpackPlugin', (compilation) => {
       // 现在，通过 compilation 对象，我们可以 tap 到各种可用的 hooks 了
       compilation.hooks.optimize.tap('MyExampleWebpackPlugin', () => {

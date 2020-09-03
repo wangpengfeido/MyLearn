@@ -19,7 +19,7 @@ const {SHOW_ALL} = VisibilityFilters;
 // 2.执行有副作用的操作，如请求api和路由跳转；
 // 3.调用非纯函数，如Data.now(),Math.random().
 
-// note:1、不要修改state；在default时返回原来的state.
+// note:1.不要修改state；2.在default时返回原来的state.
 
 function visibilityFilter(state = SHOW_ALL, action) {
   switch (action.type) {

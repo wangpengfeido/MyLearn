@@ -16,9 +16,9 @@ const store = createStore(
 );
 
 export function test() {
-  store.dispatch(selectSubreddit('reactjs'));
+  store.dispatch(selectSubreddit('test-reactjs'));
   store
-    .dispatch(fetchPostsIfNeeded('reactjs'))
+    .dispatch(fetchPostsIfNeeded('test-reactjs'))
     .then(() => console.log(store.getState()));
 }
 

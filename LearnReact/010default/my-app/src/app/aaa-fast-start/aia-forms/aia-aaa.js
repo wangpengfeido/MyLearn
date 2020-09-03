@@ -97,7 +97,7 @@ class Three extends Component {
         return (
             <div>
                 {/*当input的value设置为一个值，input将不可编辑*/}
-                {/*但如果设置为undefined，input将可以编辑*/}
+                {/*但如果设置为undefined，input将可以编辑.因为 value 为 undefined 表示它为非受控的*/}
                 <input value="hello" onChange={this.changeHandler}/>
                 <input value={undefined} onChange={this.changeHandler}/>
             </div>

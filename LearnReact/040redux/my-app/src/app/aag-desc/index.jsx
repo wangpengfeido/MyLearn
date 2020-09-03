@@ -9,12 +9,16 @@ export class AagDesc extends Component {
     };
   }
   componentDidMount() {
+    // 订阅更新
     store.subscribe(() => {
-      this.setState
+      this.setState({
+        num:store.getState()
+      })
     });
   }
   handleAdd = () => {
-    store.dispatch('INCREMENT');
+    // dispatch action
+    store.dispatch({type:'INCREMENT'});
   };
   render() {
     return (
