@@ -7,16 +7,9 @@
 
 // note：redux应用只有一个单一的store
 
-import {createStore} from 'redux';
-import todoApp from '../aba-reducer/reducers';
+import { createStore } from "redux";
+import todoApp from "../aba-reducer/reducers";
 
 // 使用createStore传入reducers来创建store
 // 第二个可选参数可以设置state初始状态。开发服务端客户端同构应用时，客户端可以接受服务端state直接用于本地初始化
 export const store = createStore(todoApp);
-
-
-
-
-
-
-

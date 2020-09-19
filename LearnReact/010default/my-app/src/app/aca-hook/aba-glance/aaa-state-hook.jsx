@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function MultipleState() {
   // 多次调用 useState 来创建多个状态
   const [age] = useState(42);
-  const [todos] = useState([{ text: 'learn hooks' }]);
+  const [todos] = useState([{ text: "learn hooks" }]);
 
   return (
     <div>
@@ -28,6 +28,9 @@ export function AaaStateHook() {
   return (
     <fieldset>
       <h2>state hook</h2>
+      <div>
+        <strong>注意：useState必须使用不可变数据。</strong>
+      </div>
       <div>count:{count}</div>
       <button onClick={() => setCount(count + 1)}>add count</button>
       <fieldset>
@@ -36,7 +39,10 @@ export function AaaStateHook() {
       </fieldset>
       <fieldset>
         <h3>什么是 Hook</h3>
-        <p>Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。</p>
+        <p>
+          Hook 是一些可以让你在函数组件里“钩入” React state
+          及生命周期等特性的函数。
+        </p>
       </fieldset>
     </fieldset>
   );

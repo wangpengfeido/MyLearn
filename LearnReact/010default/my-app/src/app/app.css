@@ -4,6 +4,7 @@
 
 .app .menu {
   width: 200px;
+  border-right: 1px solid;
   flex-grow: 0;
   word-break: break-all;
 }

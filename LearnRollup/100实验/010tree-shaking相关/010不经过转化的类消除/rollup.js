@@ -1,12 +1,12 @@
-const rollup = require('rollup');
+const rollup = require("rollup");
 
 const inputOptions = {
-  input: 'src/main.js',
+  input: "src/main.js",
   plugins: [],
 };
 const outputOptions = {
-  file: 'bundle.js',
-  format: 'cjs',
+  file: "dist/bundle.js",
+  format: "cjs",
 };
 
 async function build() {
@@ -16,8 +16,3 @@ async function build() {
 }
 
 build();
-
-
-
-
-

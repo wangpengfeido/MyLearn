@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-import {test} from "./store";
+import { test } from "./store";
 
 export class AbaAsyncActions extends Component {
   componentDidMount() {
@@ -8,11 +8,6 @@ export class AbaAsyncActions extends Component {
   }
 
   render() {
-    return (
-      <div>
-        async actions
-      </div>
-    );
+    return <div>async actions</div>;
   }
 }
-

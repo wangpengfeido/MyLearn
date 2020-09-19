@@ -13,7 +13,7 @@ const inputOptions = {
   ],
 };
 const outputOptions = {
-  file: 'bundle.js',
+  file: 'dist/bundle.js',
   format: 'cjs',
 };
 

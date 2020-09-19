@@ -5,7 +5,7 @@ const inputOptions = {
   plugins: [],
 };
 const outputOptions = {
-  file: 'bundle.js',
+  file: 'dist/bundle.js',
   format: 'cjs',
 };
 
