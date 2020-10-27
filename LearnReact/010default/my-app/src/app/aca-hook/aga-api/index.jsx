@@ -3,6 +3,7 @@ import { Link, Route } from "react-router-dom";
 
 import { AbaUseState } from "./aba-use-state.jsx";
 import { AcaUseEffect } from "./aca-use-effect.jsx";
+import { AdaUseContext } from "./ada-use-context.jsx";
 import { BcaUseCallback } from "./bca-use-callback.jsx";
 import { BdaUseMemo } from "./bda-use-memo.jsx";
 
@@ -17,6 +18,11 @@ export function AgaApi() {
       path: "/aca-hook/aga-api/aca-use-effect",
       name: "useEffect",
       component: AcaUseEffect,
+    },
+    {
+      path: "/aca-hook/aga-api/ada-use-context",
+      name: "useContext",
+      component: AdaUseContext,
     },
     {
       path: "/aca-hook/aga-api/bca-use-callback",
