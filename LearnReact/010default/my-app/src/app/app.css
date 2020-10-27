@@ -1,16 +1,22 @@
 .app {
   display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .app .menu {
-  width: 200px;
-  border-right: 1px solid;
   flex-grow: 0;
+  width: 200px;
+  height: 100%;
+  overflow-y: auto;
+  border-right: 1px solid;
   word-break: break-all;
 }
 
 .app .content {
-  width: 0;
-  padding-left: 20px;
   flex-grow: 1;
+  width: 0;
+  overflow-y: auto;
+  height: 100%;
+  padding-left: 20px;
 }

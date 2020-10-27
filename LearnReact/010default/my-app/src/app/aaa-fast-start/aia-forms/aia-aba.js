@@ -36,9 +36,9 @@ class One extends Component {
 export class AiaAba extends Component {
   render() {
     return (
-      <div>
+      <fieldset>
         <One />
-      </div>
+      </fieldset>
     );
   }
 }
