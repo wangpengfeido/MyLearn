@@ -1,0 +1,4 @@
+[
+  { "fileName": "index1.html", "publicPath": "111/" },
+  { "fileName": "index2.html", "publicPath": "222/" }
+]

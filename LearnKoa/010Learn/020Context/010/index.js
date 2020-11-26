@@ -2,7 +2,7 @@ const Koa = require('koa');
 const app = new Koa();
 
 // Koa Context 将 node 的 request 和 response 对象封装到单个对象中
-// _每个_ 请求都将创建一个 Context
+// *每个*请求都将创建一个 Context
 
 app.use(async ctx => {
   ctx.body = 'hello world';
