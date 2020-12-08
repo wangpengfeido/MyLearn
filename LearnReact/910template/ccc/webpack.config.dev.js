@@ -6,6 +6,9 @@ const commonWebpackConfig = require('./webpack.config.common');
 module.exports = merge(commonWebpackConfig, {
   mode: 'development',
   devtool: 'source-map',
+  entry:{
+    app: ['react-hot-loader/patch','./src/index.tsx']
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
@@ -30,8 +33,10 @@ module.exports = merge(commonWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
+    hot: true,
     stats: 'minimal',
     open: true,
     injectClient: false,

@@ -11,6 +11,7 @@ import { AoaRefsAndTheDom } from "./aoa-refs-and-the-dom/aoa-refs-and-the-dom";
 import { AtaUnControlledComponent } from "./ata-uncontrolled-component/ata-uncontrolled-component";
 import { AnaReconciliation } from "./ana-reconciliation/ana-reconciliation";
 import { AcaContext } from "./aca-context/aca-context";
+import { AcfContextHook } from "./acf-context-hook";
 import { AgaHigherOrderComponents } from "./aga-higher-order-components/aga-higher-order-components";
 import { AeaForwardingRefs } from "./aea-forwarding-refs/aea-forwarding-refs";
 import { AfaFragments } from "./afa-fragments/afa-fragments";
@@ -30,6 +31,10 @@ export class AbaAdvancedGuides extends Component {
           component={AbaCodeSplitting}
         />
         <Route path="/aba-advanced-guides/aca-context" component={AcaContext} />
+        <Route
+          path="/aba-advanced-guides/aca-context-hook"
+          component={AcfContextHook}
+        />
         <Route
           path="/aba-advanced-guides/aea-forwarding-refs"
           component={AeaForwardingRefs}

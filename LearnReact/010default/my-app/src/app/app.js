@@ -83,6 +83,9 @@ export class App extends Component {
                   <Link to="/aba-advanced-guides/aca-context">context</Link>
                 </li>
                 <li>
+                  <Link to="/aba-advanced-guides/aca-context-hook">context-hook</Link>
+                </li>
+                <li>
                   <Link to="/aba-advanced-guides/aea-forwarding-refs">
                     转发refs
                   </Link>
