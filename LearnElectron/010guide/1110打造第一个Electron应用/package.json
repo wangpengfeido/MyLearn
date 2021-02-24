@@ -1,0 +1,12 @@
+{
+  "config": {
+    "forge": "./forge.config.js"
+  },
+  "dependencies": {
+    "electron": "^11.0.3"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "electron-prebuilt-compile": "8.2.0"
+  }
+}
