@@ -61,3 +61,13 @@ snowpack 有内置的 JSX 支持，在`.jsx`文件中。注意：在html中引�
 
 ### snowpack --help
 帮助。
+
+## 配置
+```javascript
+{
+  // 配置 snowpack 监听的文件及打包路径
+  "mount": {
+    "文件目录": "打包到的路径",
+  }
+}
+```
