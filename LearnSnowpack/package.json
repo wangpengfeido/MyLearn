@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@snowpack/plugin-react-refresh": "^2.4.0",
     "snowpack": "^3.0.13"
   },
   "dependencies": {

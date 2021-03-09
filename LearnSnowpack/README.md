@@ -48,6 +48,8 @@ if (import.meta.hot) {
 ### React
 snowpack 有内置的 JSX 支持，在`.jsx`文件中。注意：在html中引用时仍然可使用`.js`后缀，因为snowpack会将其编译。
 
+使用`@snowpack/plugin-react-refresh`插件进行保持状态的热更新。
+
 ## CLI
 ### snowpack dev
 启动开发服务。
@@ -68,6 +70,8 @@ snowpack 有内置的 JSX 支持，在`.jsx`文件中。注意：在html中引�
   // 配置 snowpack 监听的文件及打包路径
   "mount": {
     "文件目录": "打包到的路径",
-  }
+  },
+  // 插件
+  "plugins": [],
 }
 ```
