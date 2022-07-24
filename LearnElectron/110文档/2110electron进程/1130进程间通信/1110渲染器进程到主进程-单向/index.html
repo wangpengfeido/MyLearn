@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+  </head>
+  <body>
+    Title: <input id="title" />
+    <button id="btn" type="button">Set</button>
+
+    <script>
+      const setButton = document.getElementById("btn");
+      const titleInput = document.getElementById("title");
+      setButton.addEventListener("click", () => {
+        const title = titleInput.value;
+        // 使用 preload 中暴露出的方法
+        window.electronAPI.setTitle(title);
+      });
+    </script>
+  </body>
+</html>

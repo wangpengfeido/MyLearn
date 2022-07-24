@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+  </head>
+  <body>
+    Current value: <strong id="counter">0</strong>
+
+    <script>
+      const counter = document.getElementById("counter");
+
+      // 监听消息
+      window.electronAPI.handleCounter((event, value) => {
+        const oldValue = Number(counter.innerText);
+        const newValue = oldValue + value;
+        counter.innerText = newValue;
+        event.sender.send("counter-value", newValue);
+      });
+    </script>
+  </body>
+</html>
