@@ -1,0 +1,8 @@
+{
+  "name": "electron",
+  "main": "index.js",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "../../../../node_modules/.bin/electron ."
+  }
+}
