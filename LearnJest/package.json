@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "fake-indexeddb": "^3.1.8",
     "jest": "^24.9.0"
   }
 }
