@@ -1,36 +1,32 @@
-const path = require("path");
-const fs = require("fs");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const fs = require('fs');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: "./src/index.ts",
-    sw: "./src/sw/index.ts",
+    main: './src/index.ts',
+    sw: './src/sw/index.ts',
   },
   output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "./dist"),
+    filename: '[name].js',
+    path: path.resolve(__dirname, './dist'),
   },
-  mode: "development",
+  mode: 'development',
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: ['.ts', '.js'],
   },
   module: {
-    rules: [{ test: /\.ts$/, loader: "ts-loader" }],
+    rules: [{ test: /\.ts$/, loader: 'ts-loader' }],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "public/index.html",
-      chunks: ["main"],
+      template: 'public/index.html',
+      chunks: ['main'],
     }),
   ],
   devServer: {
     open: true,
-    https: {
-      key: fs.readFileSync("./cert/localhost-key.pem"),
-      cert: fs.readFileSync("./cert/localhost.pem"),
-    },
   },
 };

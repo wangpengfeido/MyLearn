@@ -5,13 +5,8 @@
 //   return value;
 // };
 
-
 // 或者使用this.callback(err, content,sourceMap,abstractSyntaxTree) 函数，返回source map等信息。
 module.exports = function (value) {
-  value=value.replace('??????','!!!changed by loader1!!!??????')
+  value = value.replace('??????', '!!!changed by loader1!!!??????');
   this.callback(null, value);
 };
-
-
-
-

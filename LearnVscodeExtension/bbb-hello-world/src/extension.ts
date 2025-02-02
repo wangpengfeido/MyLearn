@@ -5,19 +5,18 @@ import * as vscode from 'vscode';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  // Use the console to output diagnostic information (console.log) and errors (console.error)
+  // This line of code will only be executed once when your extension is activated
+  console.log('Congratulations, your extension "bbb-hello-world" is now active!');
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "bbb-hello-world" is now active!');
+  // 注册命令，命令定义在package.json中
+  let disposable = vscode.commands.registerCommand('bbb-hello-world.helloWorld', () => {
+    // 命令内容
+    // 显示提示框
+    vscode.window.showInformationMessage('Hello World from bbb-hello-world!');
+  });
 
-	// 注册命令，命令定义在package.json中
-	let disposable = vscode.commands.registerCommand('bbb-hello-world.helloWorld', () => {
-		// 命令内容
-		// 显示提示框
-		vscode.window.showInformationMessage('Hello World from bbb-hello-world!');
-	});
-
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
